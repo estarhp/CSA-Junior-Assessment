@@ -1,7 +1,8 @@
 <script setup>
 import axios from "axios";
-import {onMounted, reactive} from 'vue'
+import {onMounted, reactive, ref} from 'vue'
 import { useStore } from 'vuex'
+import { ElMessage } from 'element-plus'
 
 const store = useStore()
 
@@ -10,14 +11,28 @@ const formInline = reactive({
   password: '',
 })
 
+const messages = ref(null)
+
+onMounted(()=>{
+  messages.value.focus()
+})
+
+
 
 
 const onSubmit = async() => {
-  if (formInline.username == ""||
-    formInline.password == ""){
+  if (formInline.username.trim() == ""||
+    formInline.password.trim() == ""){
+    ElMessage({
+      message:"输入不合法",
+      type:'warning',
+      appendTo:messages
+    })
     return
   }
-  axios({
+
+
+  const result = await axios({
     url:"/api/login",
     method:"GET",
     params:{
@@ -25,36 +40,67 @@ const onSubmit = async() => {
       password:formInline.password
     }
   })
+  ElMessage({
+    message:result.data.message,
+    customClass:"message",
+    appendTo:messages
+  })
 }
 
 const register = async ()=> {
+  if (formInline.username.trim() == ""||
+      formInline.password.trim() == ""){
+    ElMessage({
+      message:"输入不合法",
+      type:'warning',
+      appendTo:messages
+    })
+    return
+  }
+
   let formData = new FormData();
 
   formData.append("username",formInline.username)
   formData.append("password",formInline.password)
-  axios({
+  const result = await axios({
     url:"/api/register",
     method:"POST",
     data:formData
   })
+
+  ElMessage({
+    message:result.data.message,
+    customClass:"message",
+    appendTo:messages
+  })
+}
+const handleInput = ()=>{
+  formInline.password = formInline.password.trim()
+  formInline.username = formInline.username.trim()
+
 }
 </script>
 
 <template>
-  <el-form :inline="true" :model="formInline" class="demo-form-inline">
+  <div
+      ref="messages"><el-form :inline="true" :model="formInline" class="demo-form-inline">
     <el-form-item label="用户名">
-      <el-input v-model="formInline.username" placeholder="请输入用户名" />
+      <el-input v-model="formInline.username" placeholder="请输入用户名" maxlength="20" minlength="1" @blur="handleInput"/>
     </el-form-item>
     <el-form-item label="密码">
-      <el-input v-model="formInline.password" placeholder="请输入密码" />
+      <el-input v-model="formInline.password" placeholder="请输入密码" maxlength="20" minlength="4" @blur="handleInput"/>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">登录</el-button>
       <el-button type="primary" @click="register">注册</el-button>
     </el-form-item>
-  </el-form>
+  </el-form></div>
 </template>
 
 <style scoped>
+
+.message {
+  z-index: 1000;
+}
 
 </style>

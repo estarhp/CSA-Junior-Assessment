@@ -2,6 +2,7 @@
 
 import {ref} from "vue";
 import {useStore} from "vuex";
+import AddQuestion from "./AddQuestion.vue";
 const state = useStore().state
 
 
@@ -11,20 +12,22 @@ const outerVisible = ref(false)
 
 
 
+
+
 </script>
 
 <template>
 
-  <el-row>
-    <el-col :span="8">
+  <el-row >
+    <AddQuestion></AddQuestion>
+    <el-col :span="8" :offset="12">
     <div class="grid-content ep-bg-purple" >
-
     <el-button text @click="outerVisible = true" v-if="state.isLogin =='false'" style="height: 100%">
-    <span style="font-size: 2em;color: black"  >登录/注册
+    <span style="font-size: 1em;color: black"  >登录/注册
       <el-icon><CaretBottom /></el-icon>
     </span>
   </el-button>
-    <div v-else style="font-size: 2em;line-height: 2em;height: 100%"> 你好！ 亲爱的用户</div>
+    <span v-else style="font-size: 20px"> 你好！ 亲爱的用户</span>
   </div>
   </el-col>
 
@@ -32,7 +35,7 @@ const outerVisible = ref(false)
   </el-row>
 
 
-  <el-dialog v-model="outerVisible" title="请输入用户名 和 密码" draggable>
+  <el-dialog v-model="outerVisible" title="请输入用户名 和 密码" draggable :modal="false">
     <template #default>
     <Login></Login>
 
@@ -60,7 +63,6 @@ const outerVisible = ref(false)
 
 .grid-content {
   border-radius: 4px;
-  min-height: 36px;
 }
 
 </style>

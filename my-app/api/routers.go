@@ -14,6 +14,8 @@ func InitRouter() {
 	r.GET("login", Login)
 	r.POST("register", Register)
 	r.GET("isLogin", AlreadyLogin)
+	r.POST("addQuestion", AddQuestion)
+	r.GET("getAllQuestions", GetALlQuestions)
 
 	err := r.Run(":8000")
 	if err != nil {

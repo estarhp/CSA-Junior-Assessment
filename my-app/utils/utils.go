@@ -13,7 +13,7 @@ func RespSuccess(c *gin.Context, message string) {
 }
 
 func RespFail(c *gin.Context, message string) {
-	c.JSON(http.StatusInternalServerError, gin.H{
+	c.JSON(http.StatusOK, gin.H{
 		"status":  500,
 		"message": message,
 	})

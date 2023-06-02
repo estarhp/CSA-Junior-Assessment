@@ -15,7 +15,7 @@ onMounted(async()=>{
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header style="background: #606266"><Navigator></Navigator></el-header>
+      <el-header style="background: #606266;height: auto" ><Navigator></Navigator></el-header>
       <el-main style="background: #CDD0D6;height: 100%"><Main></Main></el-main>
     </el-container>
   </div>

@@ -2,7 +2,8 @@
 import axios from "axios";
 import {onMounted, reactive, ref} from 'vue'
 import { useStore } from 'vuex'
-import { ElMessage } from 'element-plus'
+
+
 
 const store = useStore()
 
@@ -11,11 +12,8 @@ const formInline = reactive({
   password: '',
 })
 
-const messages = ref(null)
 
-onMounted(()=>{
-  messages.value.focus()
-})
+const app = document.querySelector(".common-layout")
 
 
 
@@ -26,7 +24,7 @@ const onSubmit = async() => {
     ElMessage({
       message:"输入不合法",
       type:'warning',
-      appendTo:messages
+      customClass:"messages",
     })
     return
   }
@@ -41,9 +39,7 @@ const onSubmit = async() => {
     }
   })
   ElMessage({
-    message:result.data.message,
-    customClass:"message",
-    appendTo:messages
+    message:result.data.message
   })
 }
 
@@ -51,9 +47,8 @@ const register = async ()=> {
   if (formInline.username.trim() == ""||
       formInline.password.trim() == ""){
     ElMessage({
-      message:"输入不合法",
-      type:'warning',
-      appendTo:messages
+      message:"错误的输入！！",
+      type:"warning"
     })
     return
   }
@@ -70,14 +65,12 @@ const register = async ()=> {
 
   ElMessage({
     message:result.data.message,
-    customClass:"message",
-    appendTo:messages
+
   })
 }
 const handleInput = ()=>{
   formInline.password = formInline.password.trim()
   formInline.username = formInline.username.trim()
-
 }
 </script>
 
@@ -94,13 +87,10 @@ const handleInput = ()=>{
       <el-button type="primary" @click="onSubmit">登录</el-button>
       <el-button type="primary" @click="register">注册</el-button>
     </el-form-item>
-  </el-form></div>
+  </el-form>
+  </div>
 </template>
 
-<style scoped>
-
-.message {
-  z-index: 1000;
-}
+<style>
 
 </style>

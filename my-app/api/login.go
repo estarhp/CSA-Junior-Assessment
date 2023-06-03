@@ -6,7 +6,6 @@ import (
 	"my-app/dao"
 	"my-app/model"
 	"my-app/utils"
-	"strings"
 )
 
 func Login(c *gin.Context) {
@@ -33,15 +32,11 @@ func Login(c *gin.Context) {
 }
 
 func AlreadyLogin(c *gin.Context) {
-	isLogin, err := c.Cookie("isLogin")
-	if err != nil {
+	username := utils.GetUsername(c)
+	if username == "" {
 		utils.RespSuccess(c, "false")
 		return
 	}
-	arr := strings.Split(isLogin, "+")
-
-	username := arr[0]
-
 	is := dao.IsExist(username)
 
 	if !is {

@@ -14,7 +14,7 @@ type Question struct {
 }
 
 type Comment struct {
-	beID     string
+	BeID     string
 	ID       string
 	Username string
 	Date     string

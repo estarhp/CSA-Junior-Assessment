@@ -6,7 +6,6 @@ import (
 	"my-app/dao"
 	"my-app/utils"
 	"net/http"
-	"strings"
 )
 
 func AddQuestion(c *gin.Context) {
@@ -14,17 +13,14 @@ func AddQuestion(c *gin.Context) {
 	title := c.PostForm("title")
 	details := c.PostForm("details")
 
-	isLogin, err := c.Cookie("isLogin")
+	username := utils.GetUsername(c)
 
-	if err != nil {
-		log.Println(err)
+	if username == "" {
 		utils.RespFail(c, "you does not login")
 		return
 	}
 
-	username := strings.Split(isLogin, "+")[0]
-
-	err = dao.AddQuestion(title, details, username)
+	err := dao.AddQuestion(title, details, username)
 	if err != nil {
 		log.Println(err)
 		utils.RespFail(c, "add the question error")

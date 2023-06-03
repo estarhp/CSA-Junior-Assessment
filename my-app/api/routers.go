@@ -16,7 +16,8 @@ func InitRouter() {
 	r.GET("isLogin", AlreadyLogin)
 	r.POST("addQuestion", AddQuestion)
 	r.GET("getAllQuestions", GetALlQuestions)
-
+	r.POST("addComment", AddComment)
+	r.GET("getAllComments", GetAllComment)
 	err := r.Run(":8000")
 	if err != nil {
 		log.Panicln(err)

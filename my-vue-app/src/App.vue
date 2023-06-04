@@ -1,8 +1,14 @@
 <script setup>
 import MainPage from './components/MainPage.vue'
-import {watch} from "vue";
+import {onMounted, watch} from "vue";
 import {useStore} from "vuex";
-const state = useStore().state
+const store = useStore()
+
+
+
+onMounted(async()=>{
+  await store.dispatch("AlreadyLogin")
+})
 
 
 

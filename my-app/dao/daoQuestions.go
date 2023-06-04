@@ -33,3 +33,13 @@ func GetALlQuestions() ([]model.Question, error) {
 
 	return questions, nil
 }
+
+func DeleteQuestion(ID string) error {
+	var question model.Question
+	question.ID = ID
+	result := DB.Delete(&question)
+	if result.Error != nil {
+		return result.Error
+	}
+	return nil
+}

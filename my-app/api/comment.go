@@ -33,7 +33,7 @@ func AddComment(c *gin.Context) {
 }
 
 func GetAllComment(c *gin.Context) {
-	ID := c.Query("ID")
+	ID := c.Query("beID")
 
 	comments, err := dao.GetAllComment(ID)
 
@@ -47,4 +47,14 @@ func GetAllComment(c *gin.Context) {
 		"comments": comments,
 	})
 
+}
+
+func deleteComments(beID string) error {
+	err := dao.DeleteComments(beID)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+
+	return nil
 }

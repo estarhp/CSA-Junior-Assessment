@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, ref, watch,defineProps} from "vue";
 import axios from "axios";
+import {handleTime} from "../utils/index.js";
 
 
 const props = defineProps(["beID"])
@@ -29,11 +30,10 @@ onMounted(async function getComments(){
     <template #default>
       <div>
         <div v-if="comments">
-          <el-row v-for="i in comments" :key="comments.ID">
+          <el-row v-for="i in comments" :key="comments.ID" style="background: #CDD0D6">
             <el-col :span="4">{{i.Username}} : </el-col>
             <el-col :span="12">{{i.Content}}</el-col>
-            <el-col :span="8">{{i.Date}}</el-col>
-
+            <el-col :span="8">{{handleTime(i.Date)}}</el-col>
           </el-row>
         </div>
       </div>

@@ -46,3 +46,28 @@ func GetALlQuestions(c *gin.Context) {
 		"questions": questions,
 	})
 }
+
+func deleteQuestion(c *gin.Context) {
+	ID := c.PostForm("ID")
+	err := dao.DeleteQuestion(ID)
+
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "wrongly delete")
+		return
+	}
+	beID := ID
+	err = deleteComments(beID)
+
+	if err != nil {
+		utils.RespFail(c, "internal err")
+		return
+	}
+
+	if err != nil {
+		utils.RespFail(c, "wrongly delete")
+		return
+	}
+
+	utils.RespSuccess(c, "delete successfully")
+}

@@ -51,3 +51,13 @@ func QueryPassword(username string) (string, error) {
 	return user.Password, nil
 
 }
+
+func GetUserDetails(username string) (model.User, error) {
+	var user model.User
+	result := DB.Where("username = ?", username).Find(&user)
+
+	if result.Error != nil {
+		return user, result.Error
+	}
+	return user, nil
+}

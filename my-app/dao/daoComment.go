@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"log"
 	"my-app/model"
 	"my-app/utils"
 )
@@ -26,7 +27,7 @@ func AddComment(username string, content string, beID string) error {
 func GetAllComment(ID string) ([]model.Comment, error) {
 	var comments []model.Comment
 
-	result := DB.Where("be_id <> ?", ID).Order("Date desc").Find(&comments)
+	result := DB.Where("be_id = ?", ID).Order("Date desc").Find(&comments)
 
 	if result.Error != nil {
 		return comments, result.Error
@@ -34,4 +35,14 @@ func GetAllComment(ID string) ([]model.Comment, error) {
 
 	return comments, nil
 
+}
+
+func DeleteComments(beID string) error {
+	var comment model.Comment
+	result := DB.Where("be_id = ?", beID).Delete(&comment)
+	if result.Error != nil {
+		log.Println(result.Error)
+		return result.Error
+	}
+	return nil
 }

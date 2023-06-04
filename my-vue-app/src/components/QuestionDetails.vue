@@ -3,13 +3,15 @@ import {useRoute, useRouter} from "vue-router";
 import {computed, onMounted, ref} from "vue";
 import axios from "axios";
 import Comment from "./Comment.vue";
+import {useStore} from "vuex";
 
 
 const textarea = ref('')
 
 defineProps(["id"])
-const router = useRouter()
+const store = useStore()
 const route =useRoute()
+const router = useRouter()
 const question = computed(()=>{
   return JSON.parse(route.params.id)
 })
@@ -33,15 +35,58 @@ async function Submit(){
     url:"/api/addComment",
     method:"POST",
     data: formData
+  }).catch(err=> {
+    ElMessage({
+      message:result.data.message,
+      type:'warning'
+    })
+    return
   })
+
+  if (result.data.status == 500){
+    ElMessage({
+      message:result.data.message,
+      type:"warning"
+    })
+    return
+  }
 
   ElMessage({
     message:result.data.message
   })
+
+  textarea.value = ""
+  location.reload()
 }
 
 function handle(){
   textarea.value = textarea.value.trim()
+}
+
+async function deleteQuestion() {
+  const formData = new FormData()
+
+  formData.append("ID",question.value.ID)
+  const result = await axios({
+    url:"/api/deleteQuestion",
+    method:"post",
+    data:formData
+  }).catch(err => {
+    console.error(err)
+  })
+
+  if (result.data.status == 200) {
+    router.back({
+      path:"/",
+      replace:true
+    })
+    ElMessage({
+      message:result.data.message,
+      type:"warning"
+    })
+  }
+
+
 }
 
 </script>
@@ -66,6 +111,16 @@ function handle(){
     <div>
       <Comment :beID="question.ID"></Comment>
     </div>
+
+
+          <el-button
+              type="danger"
+              round icon="delete"
+              v-if="store.state.userDetails.Username === question.Username"
+              @click="deleteQuestion"
+          >delete</el-button>
+
+
 
   </div>
 </template>

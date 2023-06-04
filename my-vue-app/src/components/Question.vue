@@ -1,5 +1,5 @@
 <script setup>
-import {QuestionFilled} from "@element-plus/icons-vue";
+import {handleTime} from "../utils/index.js";
 
 defineProps([
     "question"
@@ -23,7 +23,7 @@ function handleDetails(text){
     <el-descriptions-item label="内容:">{{handleDetails(question.Details)}}</el-descriptions-item>
     <el-descriptions-item></el-descriptions-item>
     <el-descriptions-item label="发布时间:">
-      {{question.Date.replace("T"," ").split("+")[0]}}
+      {{handleTime(question.Date)}}
     </el-descriptions-item>
 
 

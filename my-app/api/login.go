@@ -6,6 +6,7 @@ import (
 	"my-app/dao"
 	"my-app/model"
 	"my-app/utils"
+	"net/http"
 )
 
 func Login(c *gin.Context) {
@@ -25,6 +26,7 @@ func Login(c *gin.Context) {
 	}
 	if password != user.Password {
 		utils.RespFail(c, "the password is wrong")
+		return
 	}
 
 	c.SetCookie("isLogin", user.Username+"+"+user.Password, 3600, "/", "127.0.0.1", false, true)
@@ -45,4 +47,18 @@ func AlreadyLogin(c *gin.Context) {
 	}
 
 	utils.RespSuccess(c, "true")
+}
+
+func getUserDetail(c *gin.Context) {
+	username := utils.GetUsername(c)
+
+	user, err := dao.GetUserDetails(username)
+	if err != nil {
+		utils.RespFail(c, "internal error")
+		return
+	}
+	user.Password = ""
+	c.JSON(http.StatusOK, gin.H{
+		"userDetails": user,
+	})
 }

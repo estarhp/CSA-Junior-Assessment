@@ -22,7 +22,8 @@ func AddComment(c *gin.Context) {
 	content := c.PostForm("content")
 	beID := c.PostForm("beID")
 	questionID := c.PostForm("questionID")
-	err := dao.AddComment(username, content, beID, questionID)
+	beUsername := c.PostForm("beUsername")
+	err := dao.AddComment(username, content, beID, questionID, beUsername)
 	if err != nil {
 		log.Println(err)
 		utils.RespFail(c, "internal err")
@@ -50,8 +51,8 @@ func GetAllComment(c *gin.Context) {
 
 }
 
-func deleteComments(beID string) error {
-	err := dao.DeleteComments(beID)
+func deleteComments(questionID string) error {
+	err := dao.DeleteComments(questionID)
 	if err != nil {
 		log.Println(err)
 		return err

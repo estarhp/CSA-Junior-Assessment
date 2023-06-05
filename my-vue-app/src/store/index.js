@@ -51,6 +51,7 @@ const actions = {
         formData.append("content",object.content)
         formData.append("beID",object.beID)
         formData.append("questionID",object.questionID)
+        formData.append("beUsername",object.beUsername||"")
         const result = await axios({
             url:"/api/addComment",
             method:"POST",

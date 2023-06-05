@@ -20,4 +20,5 @@ type Comment struct {
 	Date       string
 	Content    string
 	QuestionID string
+	BeUsername string
 }

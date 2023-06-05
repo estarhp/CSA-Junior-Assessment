@@ -19,7 +19,7 @@ async function Submit(){
   let object = {
     content:textarea.value,
     beID:question.value.ID,
-    questionID:""
+    questionID:question.value.ID
   }
 
   const willReload = await store.dispatch("addComment",object)

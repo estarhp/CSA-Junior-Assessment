@@ -1,8 +1,8 @@
 <script setup>
-import {onMounted, ref, watch,defineProps} from "vue";
+import {onMounted, ref,defineProps} from "vue";
 import axios from "axios";
-import {handleTime} from "../utils/index.js";
 import CommentDetails from "./commentDetails.vue";
+import {handleComments} from "../utils/index.js";
 
 
 const props = defineProps(["beID"])
@@ -21,6 +21,8 @@ onMounted(async function getComments(){
     console.log(err)
   })
   comments.value = result.data.comments
+  handleComments(comments.value)
+
 })
 
 </script>
@@ -30,7 +32,7 @@ onMounted(async function getComments(){
     <template #default>
       <div style="font-size: 16px;" v-if="comments">
         <div  v-for="i in comments" :key="comments.ID" style="background: #CDD0D6;margin-bottom: 20px" >
-          <CommentDetails :comment="i"></CommentDetails>
+          <CommentDetails :comment="i" :questionID="props.beID"></CommentDetails>
         </div>
       </div>
     </template>

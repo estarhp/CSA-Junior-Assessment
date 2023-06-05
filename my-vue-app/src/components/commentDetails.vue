@@ -2,31 +2,29 @@
 
 import {handleTime} from "../utils/index.js";
 import {ref} from "vue";
-import axios from "axios";
-
+import {useStore} from "vuex";
 const props = defineProps([
-    "comment"
+    "comment",
+    "questionID",
 ])
+
+const store = useStore()
 const input = ref('')
 const centerDialogVisible = ref(false)
 async function reply() {
   centerDialogVisible.value = false
-  if (input.value=""){
-    ElMessage({
-      message:"输入不可为空",
-      type:"warning"
-    })
-    return
+ let object = {
+      content:input.value,
+      beID:props.comment.ID,
+      questionID: props.questionID,
+      beUsername: props.comment.Username
+ }
+ let willReload = store.dispatch("addComment",object)
+  if (willReload) {
+    input.value = ''
+    location.reload()
   }
 
-  const formData = new FormData()
-  formData.append("beID",props.beID)
-  formData.append("content",input.value)
-  formData.append("questionID",)
-  axios({
-    url:"/api/addComment",
-    method:"post"
-  })
 }
 function handle(){
   input.value=input.value.trim()
@@ -51,8 +49,8 @@ function handle(){
     </template>
   </el-dialog>
   <el-row >
-    <el-col :span="2">{{props.comment.Username}} : </el-col>
-    <el-col :offset="20" :span="2" >
+    <el-col :span="6" style="text-align: left">{{props.comment.Username}} <span v-if="props.comment.BeUsername">->{{props.comment.BeUsername}}</span> : </el-col>
+    <el-col :offset="14" :span="2" >
       <el-dropdown>
     <span class="el-dropdown-link">
        <el-icon><More /></el-icon>
@@ -73,6 +71,9 @@ function handle(){
   <el-row>
     <el-col :span="8" :offset="17">{{handleTime(props.comment.Date)}}</el-col>
   </el-row>
+  <div v-if="props.comment.Be">
+    <CommentDetails v-for="comment in props.comment.Be " :comment="comment" :questionID="props.questionID"></CommentDetails>
+  </div>
 </template>
 
 <style scoped>

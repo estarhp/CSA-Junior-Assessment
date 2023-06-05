@@ -6,7 +6,7 @@ import (
 	"my-app/utils"
 )
 
-func AddComment(username string, content string, beID string, questionID string) error {
+func AddComment(username string, content string, beID string, questionID string, beUsername string) error {
 	comment := model.Comment{
 		ID:         utils.GenerateID(),
 		Username:   username,
@@ -14,6 +14,7 @@ func AddComment(username string, content string, beID string, questionID string)
 		Content:    content,
 		BeID:       beID,
 		QuestionID: questionID,
+		BeUsername: beUsername,
 	}
 	result := DB.Create(&comment)
 
@@ -28,7 +29,7 @@ func AddComment(username string, content string, beID string, questionID string)
 func GetAllComment(ID string) ([]model.Comment, error) {
 	var comments []model.Comment
 
-	result := DB.Where("be_id = ?", ID).Order("Date desc").Find(&comments)
+	result := DB.Where("question_id = ?", ID).Order("Date desc").Find(&comments)
 
 	if result.Error != nil {
 		return comments, result.Error
@@ -38,9 +39,9 @@ func GetAllComment(ID string) ([]model.Comment, error) {
 
 }
 
-func DeleteComments(beID string) error {
+func DeleteComments(questionID string) error {
 	var comment model.Comment
-	result := DB.Where("be_id = ?", beID).Delete(&comment)
+	result := DB.Where("question_id = ?", questionID).Delete(&comment)
 	if result.Error != nil {
 		log.Println(result.Error)
 		return result.Error

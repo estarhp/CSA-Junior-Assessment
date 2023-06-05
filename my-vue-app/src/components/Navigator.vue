@@ -3,6 +3,7 @@
 import {ref} from "vue";
 import {useStore} from "vuex";
 import AddQuestion from "./AddQuestion.vue";
+import axios from "axios";
 const state = useStore().state
 
 
@@ -10,7 +11,21 @@ const outerVisible = ref(false)
 
 
 
+async function logoff() {
+  const result = await axios({
+    url:"/api/logoff",
+    method:"post"
+  }).catch(err => {
+    console.error(err)
+    return
+  })
 
+  ElMessage({
+    message:result.data.message,
+    type:"success"
+  })
+  location.reload()
+}
 
 
 
@@ -26,9 +41,10 @@ const outerVisible = ref(false)
     <span style="font-size: 1em;color: black"  >登录/注册
       <el-icon><CaretBottom /></el-icon>
     </span>
-  </el-button>
-    <span v-else style="font-size: 20px"> 你好！ 亲爱的用户</span>
-  </div>
+    </el-button>
+    <span v-else style="font-size: 20px"> 你好！{{state.userDetails.Username}}</span>
+      <el-button type="warning" style="margin-left: 100px" @click="logoff">注销</el-button>
+        </div>
   </el-col>
 
 

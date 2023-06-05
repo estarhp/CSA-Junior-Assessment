@@ -21,7 +21,8 @@ func AddComment(c *gin.Context) {
 	}
 	content := c.PostForm("content")
 	beID := c.PostForm("beID")
-	err := dao.AddComment(username, content, beID)
+	questionID := c.PostForm("questionID")
+	err := dao.AddComment(username, content, beID, questionID)
 	if err != nil {
 		log.Println(err)
 		utils.RespFail(c, "internal err")

@@ -14,9 +14,10 @@ type Question struct {
 }
 
 type Comment struct {
-	BeID     string
-	ID       string
-	Username string
-	Date     string
-	Content  string
+	BeID       string
+	ID         string
+	Username   string
+	Date       string
+	Content    string
+	QuestionID string
 }

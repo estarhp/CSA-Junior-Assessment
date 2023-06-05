@@ -3,7 +3,8 @@ import axios from "axios";
 
 
 const state = {
-  isLogin:""
+  isLogin:"",
+  userDetails:""
 }
 
 const mutations ={
@@ -35,7 +36,47 @@ const actions = {
        })
 
       context.commit("userDetails",result.data.userDetails)
-  }
+  },
+    async addComment(context,object){
+
+        if (object.content.value == ""){
+            ElMessage({
+                message:"输入不合法",
+                type:"warning"
+            })
+            return
+        }
+
+        const formData = new FormData()
+        formData.append("content",object.content)
+        formData.append("beID",object.beID)
+        formData.append("questionID",object.questionID)
+        const result = await axios({
+            url:"/api/addComment",
+            method:"POST",
+            data: formData
+        }).catch(err=> {
+            ElMessage({
+                message:result.data.message,
+                type:'warning'
+            })
+            return false
+        })
+
+        if (result.data.status == 500){
+            ElMessage({
+                message:result.data.message,
+                type:"warning"
+            })
+            return false
+        }
+
+        ElMessage({
+            message:result.data.message
+        })
+        return true
+
+    }
 }
 
 export default createStore({

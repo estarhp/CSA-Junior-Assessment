@@ -6,13 +6,14 @@ import (
 	"my-app/utils"
 )
 
-func AddComment(username string, content string, beID string) error {
+func AddComment(username string, content string, beID string, questionID string) error {
 	comment := model.Comment{
-		ID:       utils.GenerateID(),
-		Username: username,
-		Date:     utils.FormatTime(),
-		Content:  content,
-		BeID:     beID,
+		ID:         utils.GenerateID(),
+		Username:   username,
+		Date:       utils.FormatTime(),
+		Content:    content,
+		BeID:       beID,
+		QuestionID: questionID,
 	}
 	result := DB.Create(&comment)
 

@@ -62,6 +62,10 @@ async function deleteQuestion() {
 
 }
 
+async function editQuestion(){
+
+}
+
 </script>
 
 <template>
@@ -89,9 +93,18 @@ async function deleteQuestion() {
           <el-button
               type="danger"
               round icon="delete"
-              v-if="store.state.userDetails.Username === question.Username"
+              v-if="store.state.userDetails.Username && store.state.userDetails.Username === question.Username"
               @click="deleteQuestion"
           >delete</el-button>
+
+    <el-button
+        type="primary"
+        icon="edit"
+        v-if="store.state.userDetails.Username && store.state.userDetails.Username === question.Username"
+        @click="editQuestion"
+        round >
+      Edit
+    </el-button>
 
 
 

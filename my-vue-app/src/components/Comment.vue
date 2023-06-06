@@ -21,7 +21,7 @@ onMounted(async function getComments(){
     console.log(err)
   })
   comments.value = result.data.comments
-  handleComments(comments.value)
+  comments.value = handleComments(comments.value)
 
 })
 

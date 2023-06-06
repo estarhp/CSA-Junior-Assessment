@@ -48,3 +48,29 @@ func DeleteComments(questionID string) error {
 	}
 	return nil
 }
+
+func UpdateComment(ID string, newComment string) error {
+	var comment model.Comment
+	result := DB.Where("ID = ?", ID).Find(&comment)
+
+	if result.Error != nil {
+		return result.Error
+	}
+	comment.Content = newComment
+	result = DB.Save(&comment)
+	if result.Error != nil {
+		return result.Error
+	}
+	return nil
+}
+
+func DeleteComment(ID string) error {
+	var comment model.Comment
+	result := DB.Where("ID = ?", ID).Delete(&comment)
+
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
+}

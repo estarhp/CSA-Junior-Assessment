@@ -60,3 +60,38 @@ func deleteComments(questionID string) error {
 
 	return nil
 }
+
+func updateComment(c *gin.Context) {
+	username := utils.GetUsername(c)
+
+	if username == "" {
+		utils.RespFail(c, "你还未登录")
+		return
+	}
+	ID := c.PostForm("ID")
+	newComment := c.PostForm("content")
+	err := dao.UpdateComment(ID, newComment)
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
+
+	utils.RespSuccess(c, "修改成功")
+
+}
+
+func deleteComment(c *gin.Context) {
+	ID := c.PostForm("ID")
+
+	err := dao.DeleteComment(ID)
+
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
+
+	utils.RespSuccess(c, "删除成功")
+
+}

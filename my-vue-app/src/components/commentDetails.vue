@@ -1,8 +1,9 @@
 <script setup>
 
-import {handleTime} from "../utils/index.js";
+import {handleResult, handleTime} from "../utils/index.js";
 import {ref} from "vue";
 import {useStore} from "vuex";
+import axios from "axios";
 const props = defineProps([
     "comment",
     "questionID",
@@ -11,23 +12,81 @@ const props = defineProps([
 const store = useStore()
 const input = ref('')
 const centerDialogVisible = ref(false)
+const type = ref(0)
 async function reply() {
-  centerDialogVisible.value = false
- let object = {
+switch (type.value){
+  case 1:{
+    centerDialogVisible.value = false
+    let object = {
       content:input.value,
       beID:props.comment.ID,
       questionID: props.questionID,
       beUsername: props.comment.Username
- }
- let willReload = store.dispatch("addComment",object)
-  if (willReload) {
-    input.value = ''
-    location.reload()
+    }
+    let willReload = await store.dispatch("addComment",object)
+    if (willReload) {
+      input.value = ''
+      setTimeout(()=>{
+        location.reload()
+      },500)
+
+
+    }
+    break
   }
+  case 2:{
+    centerDialogVisible.value = false
+    if (input.value==""){
+      ElMessage({
+        message:"输入不可为空",
+        type:"warning"
+      })
+      return
+    }
+    const formData = new FormData()
+    formData.append("ID",props.comment.ID)
+    formData.append("content",input.value)
+    const result = await  axios({
+      url:"/api/updateComment",
+      method:"post",
+      data:formData
+    })
+
+    handleResult(result)
+
+    break
+  }
+
+
+
+}
+
 
 }
 function handle(){
   input.value=input.value.trim()
+
+}
+function modifyComment(){
+  centerDialogVisible.value = true
+  type.value= 2
+  input.value=props.comment.Content
+
+}
+
+async function deleteComment(){
+
+  const formData = new FormData()
+  formData.append("ID",props.comment.ID)
+  const result = await axios({
+    url:'/api/deleteComment',
+    method:"post",
+    data : formData
+  })
+
+
+  handleResult(result)
+
 }
 </script>
 
@@ -57,9 +116,13 @@ function handle(){
     </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item @click="centerDialogVisible = true">回复</el-dropdown-item>
-            <el-dropdown-item>Action 2</el-dropdown-item>
-            <el-dropdown-item>Action 3</el-dropdown-item>
+            <el-dropdown-item @click="centerDialogVisible = true , type=1">回复</el-dropdown-item>
+            <el-dropdown-item @click="modifyComment"
+                              v-if="(store.state.userDetails.Username) && (store.state.userDetails.Username === props.comment.Username) "
+            >修改</el-dropdown-item>
+            <el-dropdown-item @click="deleteComment"
+                              v-if="(store.state.userDetails.Username) && (store.state.userDetails.Username === props.comment.Username) "
+            >删除</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

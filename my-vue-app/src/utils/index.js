@@ -5,15 +5,14 @@ export function handleTime(time){
 export function handleComments(comments){
     while (already(comments)) {
         comments.forEach((item)=> {
-            if (item.BeID !== item.QuestionID){
+            if (item.BeID !== item.QuestionID && !item.already ){
                 comments.forEach(titem=> {
                     if (titem.ID === item.BeID){
                         if (titem.Be == undefined){
                             titem.Be =[]
                         }
                         titem.Be.push(item)
-                        let index = comments.indexOf(item)
-                        comments.splice(index,1)
+                        item["already"] = true
                     }
                 })
             }
@@ -21,14 +20,42 @@ export function handleComments(comments){
 
     }
 
+    let newcomments = comments.filter((item)=>{
+        return !item.already
+    })
+
+    return newcomments
+
 }
 
 function already(comments){
     for (let commentsKey of comments) {
-        if (commentsKey.BeID !== commentsKey.QuestionID){
+        if (commentsKey.BeID !== commentsKey.QuestionID && !commentsKey.already){
             return true
         }
     }
 
     return false
+}
+
+export function handleResult(result){
+    if (result.data.status == 500){
+        ElMessage({
+            message:result.data.messae,
+            type:"warning"
+        })
+
+        return
+    }
+
+    if(result.data.status == 200){
+        ElMessage({
+            message:result.data.message,
+            type:"success"
+        })
+    }
+
+    setTimeout(()=>{
+        location.reload()
+    },500)
 }

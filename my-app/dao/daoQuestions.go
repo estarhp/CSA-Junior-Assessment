@@ -43,3 +43,34 @@ func DeleteQuestion(ID string) error {
 	}
 	return nil
 }
+
+func EditQuestion(title string, details string, ID string) error {
+	var question model.Question
+
+	result := DB.Where("ID = ?", ID).Find(&question)
+
+	if result.Error != nil {
+		return result.Error
+	}
+
+	question.Title = title
+	question.Details = details
+
+	result = DB.Save(&question)
+
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
+}
+
+func GetQuestion(ID string) (model.Question, error) {
+	var question model.Question
+	result := DB.Where("ID = ?", ID).Find(&question)
+	if result.Error != nil {
+		return question, result.Error
+	}
+
+	return question, nil
+}

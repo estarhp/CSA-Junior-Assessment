@@ -72,5 +72,33 @@ func deleteQuestion(c *gin.Context) {
 	utils.RespSuccess(c, "delete successfully")
 }
 func editQuestion(c *gin.Context) {
+	title := c.PostForm("title")
+	details := c.PostForm("details")
+	ID := c.PostForm("ID")
 
+	err := dao.EditQuestion(title, details, ID)
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
+
+	utils.RespSuccess(c, "修改问题成功")
+
+}
+
+func getQuestion(c *gin.Context) {
+	ID := c.Query("ID")
+
+	question, err := dao.GetQuestion(ID)
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"question": question,
+		"status":   200,
+	})
 }

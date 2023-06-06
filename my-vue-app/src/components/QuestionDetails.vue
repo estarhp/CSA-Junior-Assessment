@@ -1,9 +1,10 @@
 <script setup>
 import {useRoute, useRouter} from "vue-router";
-import {computed, onMounted, ref} from "vue";
+import {onMounted, ref} from "vue";
 import axios from "axios";
 import Comment from "./Comment.vue";
 import {useStore} from "vuex";
+import {handleResult} from "../utils/index.js";
 
 
 const textarea = ref('')
@@ -11,15 +12,27 @@ const textarea = ref('')
 const store = useStore()
 const route =useRoute()
 const router = useRouter()
-const question = computed(()=>{
-  return JSON.parse(route.params.id)
-})
+const question = ref(null)
 
+const text = ref(null)
+const title = ref(null)
+onMounted(async ()=>{
+  const result  =await  axios({
+    url:"/api/getQuestion",
+    method:"get",
+    params:{
+      ID:route.params.id
+    }
+  })
+
+  question.value = result.data.question
+  text.value = question.value.Details
+  title.value = question.value.Title
+})
 
 const centerDialogVisible = ref(false)
 
-const text = ref(question.value.Details)
-const title = ref(question.value.Title)
+
 
 async function Submit(){
   let object = {
@@ -80,12 +93,15 @@ async function editQuestion(){
 
    const  formData = new FormData()
   formData.append("title",title.value)
-  formData.append("content",text.value)
+  formData.append("details",text.value)
+  formData.append("ID",question.value.ID)
     const result = await axios({
       url:"/api/editQuestion",
       method:"post",
       data:formData
     })
+
+  handleResult(result)
 
 }
 
@@ -94,6 +110,8 @@ async function editQuestion(){
 <template>
   <div style="background:#F2F3F5;height: 100vh;font-size: 20px" v-if="question">
     <div class="common-layout" style="width: 100%;background:#909399;text-align: left">
+     <div style="text-align: center"> <el-text class="mx-1" style="font-size: 25px">{{question.Title}}</el-text></div>
+
       <el-text class="mx-1" type="success" size="large">{{question.Username}} : </el-text>
       <el-text class="mx-1">{{question.Details}}</el-text>
     </div>
@@ -152,7 +170,7 @@ async function editQuestion(){
       <template #footer>
       <span class="dialog-footer">
         <el-button @click="centerDialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="deleteQuestion">
+        <el-button type="primary" @click="editQuestion">
           Confirm
         </el-button>
       </span>

@@ -25,9 +25,7 @@ onMounted(async ()=>{
 
 
 function goDetail(i){
-
-  console.log(i)
-  router.push({name:"question.details",params:{id:JSON.stringify(i)}})
+  router.push({name:"question.details",params:{id:i.ID}})
 }
 
 

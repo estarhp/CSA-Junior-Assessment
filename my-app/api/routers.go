@@ -24,6 +24,7 @@ func InitRouter() {
 	r.POST("updateComment", updateComment)
 	r.POST("deleteComment", deleteComment)
 	r.POST("editQuestion", editQuestion)
+	r.GET("getQuestion", getQuestion)
 
 	err := r.Run(":8000")
 	if err != nil {

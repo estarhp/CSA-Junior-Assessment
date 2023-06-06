@@ -15,6 +15,12 @@ const question = computed(()=>{
   return JSON.parse(route.params.id)
 })
 
+
+const centerDialogVisible = ref(false)
+
+const text = ref(question.value.Details)
+const title = ref(question.value.Title)
+
 async function Submit(){
   let object = {
     content:textarea.value,
@@ -63,6 +69,23 @@ async function deleteQuestion() {
 }
 
 async function editQuestion(){
+   centerDialogVisible.value = false
+   if (title.value == "" || text.value == ""){
+     ElMessage({
+       message:"输入不可为空",
+       type:"warning"
+     })
+     return
+   }
+
+   const  formData = new FormData()
+  formData.append("title",title.value)
+  formData.append("content",text.value)
+    const result = await axios({
+      url:"/api/editQuestion",
+      method:"post",
+      data:formData
+    })
 
 }
 
@@ -101,11 +124,40 @@ async function editQuestion(){
         type="primary"
         icon="edit"
         v-if="store.state.userDetails.Username && store.state.userDetails.Username === question.Username"
-        @click="editQuestion"
+        @click="centerDialogVisible = true"
         round >
       Edit
     </el-button>
-
+    <el-dialog v-model="centerDialogVisible"
+               width="30%"
+               center
+               :fullscreen="true"
+    >
+      title : <el-input
+          v-model="title"
+          autosize
+          type="textarea"
+          placeholder="Please input"
+          @blur="handle"
+      />
+      <div style="margin-bottom: 20px"></div>
+      content :
+      <el-input
+          v-model="text"
+          autosize
+          type="textarea"
+          placeholder="Please input"
+          @blur="handle"
+      />
+      <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="deleteQuestion">
+          Confirm
+        </el-button>
+      </span>
+      </template>
+    </el-dialog>
 
 
   </div>

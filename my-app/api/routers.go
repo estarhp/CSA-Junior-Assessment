@@ -23,6 +23,7 @@ func InitRouter() {
 	r.POST("logoff", Logoff)
 	r.POST("updateComment", updateComment)
 	r.POST("deleteComment", deleteComment)
+	r.POST("editQuestion", editQuestion)
 
 	err := r.Run(":8000")
 	if err != nil {

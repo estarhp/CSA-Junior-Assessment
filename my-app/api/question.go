@@ -71,3 +71,6 @@ func deleteQuestion(c *gin.Context) {
 
 	utils.RespSuccess(c, "delete successfully")
 }
+func editQuestion(c *gin.Context) {
+
+}

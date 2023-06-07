@@ -49,7 +49,8 @@ func GetALlQuestions(c *gin.Context) {
 
 func deleteQuestion(c *gin.Context) {
 	ID := c.PostForm("ID")
-	err := dao.DeleteQuestion(ID)
+	username := utils.GetUsername(c)
+	err := dao.DeleteQuestion(username, ID)
 
 	if err != nil {
 		log.Println(err)
@@ -101,4 +102,38 @@ func getQuestion(c *gin.Context) {
 		"question": question,
 		"status":   200,
 	})
+}
+
+func getUserQuestion(c *gin.Context) {
+	username := utils.GetUsername(c)
+
+	questions, err := dao.GetUserQuestion(username)
+
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "internal err")
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"questions": questions,
+		"status":    200,
+	})
+}
+
+func getUserComments(c *gin.Context) {
+	username := utils.GetUsername(c)
+
+	comments, err := dao.GetUserComments(username)
+
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"comments": comments,
+	})
+
 }

@@ -74,3 +74,17 @@ func DeleteComment(ID string) error {
 
 	return nil
 }
+
+func GetUserComments(username string) (map[string][]model.Comment, error) {
+	var comments []model.Comment
+	var commentsMap = make(map[string][]model.Comment)
+
+	result := DB.Where("Username = ?", username).Find(&comments)
+	if result.Error != nil {
+		return commentsMap, result.Error
+	}
+
+	commentsMap = utils.SortComments(comments)
+
+	return commentsMap, nil
+}

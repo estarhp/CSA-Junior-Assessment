@@ -28,9 +28,11 @@ onMounted(async ()=>{
   question.value = result.data.question
   text.value = question.value.Details
   title.value = question.value.Title
+
+
 })
 
-const centerDialogVisible = ref(false)
+const centerDialogVisible = ref(route.params.edit === "true")
 
 
 

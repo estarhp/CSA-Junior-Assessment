@@ -1,4 +1,5 @@
 <template>
+  <h3 style="text-align: left">your questions</h3>
   <el-table :data="tableData" style="width: 100%">
     <el-table-column label="Date" width="180">
       <template #default="scope">
@@ -38,6 +39,9 @@
       </template>
     </el-table-column>
   </el-table>
+   <div style="margin-bottom: 20px"></div>
+  <h3 style="text-align: left">your comments</h3>
+  
 </template>
 
 <script lang="ts" setup>
@@ -48,6 +52,8 @@ import {useStore} from "vuex";
 import { Timer } from '@element-plus/icons-vue'
 import {handleTime} from '../utils/index.js'
 import {onMounted, ref} from "vue";
+import axios from "axios";
+import {useRouter} from "vue-router";
 interface Question {
   Date: string
   Title: string,
@@ -55,21 +61,62 @@ interface Question {
 }
 
 const store = useStore()
+const router = useRouter()
+
+async function deleteQuestion(ID : string ) {
+  const formData = new FormData()
+
+  formData.append("ID",ID)
+  const result = await axios({
+    url:"/api/deleteQuestion",
+    method:"post",
+    data:formData
+  }).catch(err => {
+    console.error(err)
+  })
+
+  if (result.data.status == 200) {
+    ElMessage({
+      message:result.data.message,
+      type:"warning"
+    })
+    setTimeout(()=>{
+      location.reload()
+    },1000)
+  }
+
+
+}
 
 const handleEdit = (index: number, row: Question) => {
-  console.log(index, row)
+  router.push({
+    name:"question.details",
+    params:{
+      id:row.ID,
+      edit:true,
+    }
+  })
+  console.log(index, row.ID)
 }
-const handleDelete = (index: number, row: Question) => {
-  console.log(index, row)
+const handleDelete = async (index: number, row: Question) => {
+   await deleteQuestion(row.ID)
 }
+
+const comments = ref(null)
 
 const tableData = ref([])
 onMounted(async ()=>{
-  if (!store.state.allQuestions){
-    await store.dispatch("getAllQuestions")
-  }
+  const  result1  = await  axios({
+    url:"/api/getUserQuestion",
+    method:"get",
+  })
+  const  result2  = await  axios({
+    url:"/api/getUserComments",
+    method:"get"
+  })
 
-  tableData.value  = store.state.allQuestions
+  comments.value = result2.data.comments
+  tableData.value = result1.data.questions
 })
 
 function handleDetails(detials : string){
@@ -78,5 +125,7 @@ function handleDetails(detials : string){
   }
   return detials
 }
+
+
 
 </script>

@@ -34,10 +34,11 @@ func GetALlQuestions() ([]model.Question, error) {
 	return questions, nil
 }
 
-func DeleteQuestion(ID string) error {
+func DeleteQuestion(username, ID string) error {
 	var question model.Question
 	question.ID = ID
-	result := DB.Delete(&question)
+
+	result := DB.Where("Username = ?", username).Delete(&question)
 	if result.Error != nil {
 		return result.Error
 	}
@@ -73,4 +74,16 @@ func GetQuestion(ID string) (model.Question, error) {
 	}
 
 	return question, nil
+}
+
+func GetUserQuestion(username string) ([]model.Question, error) {
+	var questions []model.Question
+
+	result := DB.Where("Username = ?", username).Find(&questions)
+
+	if result.Error != nil {
+		return questions, result.Error
+	}
+
+	return questions, nil
 }

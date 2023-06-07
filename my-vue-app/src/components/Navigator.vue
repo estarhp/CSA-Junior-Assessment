@@ -4,8 +4,9 @@ import {ref} from "vue";
 import {useStore} from "vuex";
 import AddQuestion from "./AddQuestion.vue";
 import axios from "axios";
+import {useRouter} from "vue-router";
 const state = useStore().state
-
+const router = useRouter()
 
 const outerVisible = ref(false)
 
@@ -27,6 +28,10 @@ async function logoff() {
   location.reload()
 }
 
+function userDetails() {
+  router.push("/userDetails")
+}
+
 
 
 </script>
@@ -42,7 +47,15 @@ async function logoff() {
       <el-icon><CaretBottom /></el-icon>
     </span>
     </el-button>
-    <span v-else style="font-size: 20px"> 你好！{{state.userDetails.Username}}</span>
+    <span v-else style="font-size: 20px" >
+      你好！{{state.userDetails.Username}}
+
+      <el-avatar class="center"
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+                 @click="userDetails"
+      />
+
+    </span>
       <el-button type="warning" style="margin-left: 100px" @click="logoff">注销</el-button>
         </div>
   </el-col>
@@ -79,6 +92,10 @@ async function logoff() {
 
 .grid-content {
   border-radius: 4px;
+}
+
+.center {
+ margin-bottom: -20px;
 }
 
 </style>

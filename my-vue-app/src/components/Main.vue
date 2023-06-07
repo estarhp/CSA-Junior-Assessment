@@ -3,24 +3,19 @@ import {onMounted, reactive, ref} from "vue";
 import axios from "axios";
 import Question from "./Question.vue";
 import {useRouter} from "vue-router";
+import {useStore} from "vuex";
 
 
 const router = useRouter()
-
+const store = useStore()
 
 const questions =ref(null)
 onMounted(async ()=>{
+  if (!store.state.allQuestions){
+    await store.dispatch("getAllQuestions")
+  }
 
-
-  const result = await axios({
-      url:"/api/getAllQuestions",
-      method:"get",
-  })
-
-  questions.value = result.data.questions
-
-
-
+  questions.value = store.state.allQuestions
 })
 
 

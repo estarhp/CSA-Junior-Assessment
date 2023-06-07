@@ -2,7 +2,6 @@
 
 import Navigator from "./Navigator.vue";
 import Main from "./Main.vue";
-import {onMounted} from "vue";
 import {useStore} from "vuex";
 
 const store = useStore()

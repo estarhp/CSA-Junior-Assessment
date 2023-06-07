@@ -2,11 +2,13 @@ import Question from "../components/Question.vue";
 import QuestionDetails from "../components/QuestionDetails.vue";
 import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 import MainPage from "../components/MainPage.vue";
+import UserDetails from "../components/UserDetails.vue";
 
 const routes = [
     // 动态字段以冒号开始
     { path: '/questionDetails/:id',name:"question.details", component: QuestionDetails, props: true },
-    {path: '/',component:  MainPage}
+    {path: '/',component:  MainPage},
+    {path:"/userDetails",component:UserDetails}
 ]
 
 

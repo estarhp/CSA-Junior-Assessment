@@ -1,6 +1,6 @@
 <template>
   <h3 style="text-align: left">your questions</h3>
-  <el-table :data="tableData" style="width: 100%">
+  <el-table  v-if="tableData" :data="tableData" style="width: 100%">
     <el-table-column label="Date" width="180">
       <template #default="scope">
         <div style="display: flex; align-items: center">
@@ -39,9 +39,17 @@
       </template>
     </el-table-column>
   </el-table>
+  <div v-else style="font-size: 20px">你尚未发布任何问题</div>
    <div style="margin-bottom: 20px"></div>
   <h3 style="text-align: left">your comments</h3>
-  
+  <el-row  v-if="comments" v-for="i in comments" >
+    <el-row v-for="j in i">
+      <el-col :span="4">j.BeUsename</el-col>
+      <el-col :span="4">j.Date</el-col>
+      <el-col :span="4">j.QuestionID</el-col>
+    </el-row>
+  </el-row>
+  <div v-else style="font-size: 20px">你尚未发表任何评论</div>
 </template>
 
 <script lang="ts" setup>

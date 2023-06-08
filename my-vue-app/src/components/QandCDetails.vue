@@ -42,11 +42,11 @@
   <div v-else style="font-size: 20px">你尚未发布任何问题</div>
    <div style="margin-bottom: 20px"></div>
   <h3 style="text-align: left">your comments</h3>
-  <el-row  v-if="comments" v-for="i in comments" >
+  <el-row  v-if="comments" v-for="i in comments" style="background: #747bff;margin-bottom: 30px">
     <el-row v-for="j in i">
-      <el-col :span="4">j.BeUsename</el-col>
-      <el-col :span="4">j.Date</el-col>
-      <el-col :span="4">j.QuestionID</el-col>
+      <el-col :span="8">{{j.BeID}}</el-col>
+      <el-col :span="8">{{ j.Date }}</el-col>
+      <el-col :span="8">{{ j.QuestionID }}</el-col>
     </el-row>
   </el-row>
   <div v-else style="font-size: 20px">你尚未发表任何评论</div>

@@ -1,8 +1,9 @@
 package model
 
 type User struct {
-	Username string
-	Password string
+	Username    string
+	Password    string
+	AvatarImage string
 }
 
 type Question struct {
@@ -21,4 +22,24 @@ type Comment struct {
 	Content    string
 	QuestionID string
 	BeUsername string
+}
+
+type SmResult struct {
+	Success bool   `json:"success"`
+	Code    string `json:"code"`
+	Message string `json:"message"`
+	Data    struct {
+		FileID    int    `json:"file_id"`
+		Width     int    `json:"width"`
+		Height    int    `json:"height"`
+		Filename  string `json:"filename"`
+		Storename string `json:"storename"`
+		Size      int    `json:"size"`
+		Path      string `json:"path"`
+		Hash      string `json:"hash"`
+		URL       string `json:"url"`
+		Delete    string `json:"delete"`
+		Page      string `json:"page"`
+	} `json:"data"`
+	RequestID string `json:"RequestId"`
 }

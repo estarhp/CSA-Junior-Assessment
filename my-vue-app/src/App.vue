@@ -10,6 +10,14 @@ onMounted(async()=>{
   await store.dispatch("AlreadyLogin")
 })
 
+onMounted(async ()=>{
+  if (!store.state.allQuestions){
+    await store.dispatch("getAllQuestions")
+  }
+
+
+})
+
 
 
 </script>

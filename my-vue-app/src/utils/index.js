@@ -1,3 +1,5 @@
+import {useStore} from "vuex";
+
 export function handleTime(time){
     return time.replace("T"," ").split("+")[0]
 }
@@ -58,4 +60,23 @@ export function handleResult(result){
     setTimeout(()=>{
         location.reload()
     },500)
+}
+
+
+export function getQuestion(ID){
+    const store = useStore()
+    for (let i = 0; i < store.state.allQuestions.length; i++) {
+        if (store.state.allQuestions[i].ID == ID ){
+            return store.state.allQuestions[i].Title
+        }
+    }
+
+}
+
+export function getNumberOfComments(comments) {
+    let sum = 0
+    for (const commentsKey in comments) {
+        sum += comments[commentsKey].length
+    }
+    return sum
 }

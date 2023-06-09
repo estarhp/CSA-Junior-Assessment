@@ -3,6 +3,7 @@
 import {useStore} from "vuex";
 import {ref} from "vue";
 import QandCDetails from "./QandCDetails.vue";
+import Upload from "./Upload.vue";
 
 const store = useStore()
 const telephone = ref("")
@@ -52,8 +53,8 @@ function isPhoneNumber() {
     </el-descriptions-item>
 
   </el-descriptions>
+  <Upload></Upload>
   <QandCDetails>
-
   </QandCDetails>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <h3 style="text-align: left">your questions</h3>
+  <h3 style="text-align: left">your questions ({{tableData.length}})</h3>
   <el-table  v-if="tableData" :data="tableData" style="width: 100%">
     <el-table-column label="Date" width="180">
       <template #default="scope">
@@ -41,13 +41,24 @@
   </el-table>
   <div v-else style="font-size: 20px">你尚未发布任何问题</div>
    <div style="margin-bottom: 20px"></div>
-  <h3 style="text-align: left">your comments</h3>
-  <el-row  v-if="comments" v-for="i in comments" style="background: #747bff;margin-bottom: 30px">
-    <el-row v-for="j in i">
-      <el-col :span="8">{{j.BeID}}</el-col>
-      <el-col :span="8">{{ j.Date }}</el-col>
-      <el-col :span="8">{{ j.QuestionID }}</el-col>
-    </el-row>
+  <h3 style="text-align: left">your comments {{getNumberOfComments(comments)}}</h3>
+  <el-row  v-if="comments" v-for="(i,index) in comments" style="background: #747bff;margin-bottom: 30px">
+    <el-col :span="24">话题:  {{ getQuestion(index) }}</el-col>
+     <el-row style="width: 100%">
+       <el-col :span="8"><h3>出处</h3></el-col>
+       <el-col :span="8"><h3>内容</h3></el-col>
+       <el-col :span="8"><h3>发布时间</h3></el-col>
+
+     </el-row>
+      <el-row v-for="j in i" style="width: 100%;margin: 10px 0">
+        <el-col :span="8">
+          <div v-if="j.BeID == index"> 回复给此话题</div>
+          <div v-else>回复给用户:{{ j.BeUsername }}</div>
+        </el-col>
+        <el-col :span="8">{{ j.Content }}</el-col>
+        <el-col :span="8">{{ handleTime(j.Date) }}</el-col>
+      </el-row>
+
   </el-row>
   <div v-else style="font-size: 20px">你尚未发表任何评论</div>
 </template>
@@ -58,10 +69,11 @@ import {useStore} from "vuex";
 
 
 import { Timer } from '@element-plus/icons-vue'
-import {handleTime} from '../utils/index.js'
+import {getNumberOfComments, getQuestion, handleTime} from '../utils/index.js'
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import {useRouter} from "vue-router";
+import Comment from "./Comment.vue";
 interface Question {
   Date: string
   Title: string,

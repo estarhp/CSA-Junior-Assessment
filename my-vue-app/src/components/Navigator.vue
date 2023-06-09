@@ -50,10 +50,15 @@ function userDetails() {
     <span v-else style="font-size: 20px" >
       你好！{{state.userDetails.Username}}
 
-      <el-avatar class="center"
+      <el-avatar class="center" v-if="!state.userDetails.AvatarImage"
           src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
                  @click="userDetails"
       />
+      <el-avatar class="center" v-else
+                 :src="state.userDetails.AvatarImage"
+                 @click="userDetails"
+      />
+
 
     </span>
       <el-button type="warning" style="margin-left: 100px" @click="logoff">注销</el-button>

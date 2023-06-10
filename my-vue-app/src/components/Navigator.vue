@@ -61,7 +61,7 @@ function userDetails() {
 
 
     </span>
-      <el-button type="warning" style="margin-left: 100px" @click="logoff">注销</el-button>
+      <el-button type="warning" style="margin-left: 100px" @click="logoff" v-if="state.isLogin === 'true'">注销</el-button>
         </div>
   </el-col>
 

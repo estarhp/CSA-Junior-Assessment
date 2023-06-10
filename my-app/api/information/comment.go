@@ -1,4 +1,4 @@
-package api
+package information
 
 import (
 	"github.com/gin-gonic/gin"
@@ -61,7 +61,7 @@ func deleteComments(questionID string) error {
 	return nil
 }
 
-func updateComment(c *gin.Context) {
+func UpdateComment(c *gin.Context) {
 	username := utils.GetUsername(c)
 
 	if username == "" {
@@ -81,7 +81,7 @@ func updateComment(c *gin.Context) {
 
 }
 
-func deleteComment(c *gin.Context) {
+func DeleteComment(c *gin.Context) {
 	ID := c.PostForm("ID")
 
 	err := dao.DeleteComment(ID)

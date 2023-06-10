@@ -1,7 +1,8 @@
 <script setup>
 import axios from "axios";
-import {onMounted, reactive, ref} from 'vue'
+import { reactive} from 'vue'
 import { useStore } from 'vuex'
+import {reload} from "../utils/index.js";
 
 
 
@@ -41,6 +42,8 @@ const onSubmit = async() => {
   ElMessage({
     message:result.data.message
   })
+ reload(result)
+
 }
 
 const register = async ()=> {
@@ -65,8 +68,8 @@ const register = async ()=> {
 
   ElMessage({
     message:result.data.message,
-
   })
+
 }
 const handleInput = ()=>{
   formInline.password = formInline.password.trim()

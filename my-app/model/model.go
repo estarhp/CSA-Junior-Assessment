@@ -5,6 +5,8 @@ type User struct {
 	Password    string
 	AvatarImage string
 	ImageHash   string
+	Telephone   string
+	Address     string
 }
 
 type Question struct {
@@ -42,5 +44,13 @@ type SmResult struct {
 		Delete    string `json:"delete"`
 		Page      string `json:"page"`
 	} `json:"data"`
+	RequestID string `json:"RequestId"`
+}
+
+type DeleteResult struct {
+	Success   bool   `json:"success"`
+	Code      string `json:"code"`
+	Message   string `json:"message"`
+	Data      []any  `json:"data"`
 	RequestID string `json:"RequestId"`
 }

@@ -80,3 +80,11 @@ export function getNumberOfComments(comments) {
     }
     return sum
 }
+
+export function reload(result){
+    if (result.data.status === 200){
+        setTimeout(()=>{
+            location.reload()
+        },1000)
+    }
+}

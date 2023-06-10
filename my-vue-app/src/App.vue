@@ -11,9 +11,9 @@ onMounted(async()=>{
 })
 
 onMounted(async ()=>{
-  if (!store.state.allQuestions){
+
     await store.dispatch("getAllQuestions")
-  }
+
 
 
 })

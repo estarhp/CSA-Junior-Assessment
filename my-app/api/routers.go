@@ -3,7 +3,10 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"log"
+	"my-app/api/information"
 	"my-app/api/middleWare"
+	"my-app/api/smms"
+	"my-app/api/user"
 )
 
 func InitRouter() {
@@ -18,23 +21,24 @@ func InitRouter() {
 
 	p := r.Group("api")
 	{
-		p.GET("/login", Login)
-		p.POST("/register", Register)
-		p.GET("/isLogin", AlreadyLogin)
-		p.POST("/addQuestion", AddQuestion)
-		p.GET("/getAllQuestions", GetALlQuestions)
-		p.POST("/addComment", AddComment)
-		p.GET("/getAllComments", GetAllComment)
-		p.GET("/userDetails", getUserDetail)
-		p.POST("/deleteQuestion", deleteQuestion)
-		p.POST("/logoff", Logoff)
-		p.POST("/updateComment", updateComment)
-		p.POST("/deleteComment", deleteComment)
-		p.POST("/editQuestion", editQuestion)
-		p.GET("/getQuestion", getQuestion)
-		p.GET("/getUserQuestion", getUserQuestion)
-		p.GET("/getUserComments", getUserComments)
-		p.POST("/upload", uploadAvatarImage)
+		p.GET("/login", user.Login)
+		p.POST("/register", user.Register)
+		p.GET("/isLogin", user.AlreadyLogin)
+		p.POST("/addQuestion", information.AddQuestion)
+		p.GET("/getAllQuestions", information.GetALlQuestions)
+		p.POST("/addComment", information.AddComment)
+		p.GET("/getAllComments", information.GetAllComment)
+		p.GET("/userDetails", user.GetUserDetail)
+		p.POST("/deleteQuestion", information.DeleteQuestion)
+		p.POST("/logoff", user.Logoff)
+		p.POST("/updateComment", information.UpdateComment)
+		p.POST("/deleteComment", information.DeleteComment)
+		p.POST("/editQuestion", information.EditQuestion)
+		p.GET("/getQuestion", information.GetQuestion)
+		p.GET("/getUserQuestion", information.GetUserQuestion)
+		p.GET("/getUserComments", information.GetUserComments)
+		p.POST("/upload", smms.UploadAvatarImage)
+		p.POST("/saveUserDetails", user.SaveUserDetails)
 	}
 
 	err := r.Run(":8000")

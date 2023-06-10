@@ -61,3 +61,15 @@ func GetUserDetails(username string) (model.User, error) {
 	}
 	return user, nil
 }
+
+func SaveUserDetails(username string, telephone string, address string) error {
+	var user model.User
+	DB.Where("username = ?", username).Find(&user)
+	user.Telephone = telephone
+	user.Address = address
+	result := DB.Where("username = ?", username).Save(&user)
+	if result.Error != nil {
+		return result.Error
+	}
+	return nil
+}

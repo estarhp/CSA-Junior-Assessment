@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "alova": "^2.6.0",
     "axios": "^1.4.0",
     "element-plus": "^2.3.6",
     "react": "^18.2.0",

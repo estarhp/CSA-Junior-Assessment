@@ -2,7 +2,10 @@
 
 import {reactive, ref} from 'vue'
 import axios from "axios";
+import {useStore} from "vuex";
 
+
+const store = useStore()
 
 const question = reactive({
   input : "",
@@ -12,7 +15,7 @@ const question = reactive({
 let dialogVisible = ref(false)
 
 async function handler() {
-  dialogVisible = false
+  dialogVisible.value = false
 
   if (question.input == '' || question.textarea == "") {
     ElMessage({
@@ -39,6 +42,7 @@ async function handler() {
       center:true,
       type:"success"
     })
+     store.dispatch("getAllQuestions")
 
     return
   }

@@ -1,4 +1,4 @@
-package api
+package information
 
 import (
 	"github.com/gin-gonic/gin"
@@ -47,7 +47,7 @@ func GetALlQuestions(c *gin.Context) {
 	})
 }
 
-func deleteQuestion(c *gin.Context) {
+func DeleteQuestion(c *gin.Context) {
 	ID := c.PostForm("ID")
 	username := utils.GetUsername(c)
 	err := dao.DeleteQuestion(username, ID)
@@ -72,7 +72,7 @@ func deleteQuestion(c *gin.Context) {
 
 	utils.RespSuccess(c, "delete successfully")
 }
-func editQuestion(c *gin.Context) {
+func EditQuestion(c *gin.Context) {
 	title := c.PostForm("title")
 	details := c.PostForm("details")
 	ID := c.PostForm("ID")
@@ -88,7 +88,7 @@ func editQuestion(c *gin.Context) {
 
 }
 
-func getQuestion(c *gin.Context) {
+func GetQuestion(c *gin.Context) {
 	ID := c.Query("ID")
 
 	question, err := dao.GetQuestion(ID)
@@ -104,7 +104,7 @@ func getQuestion(c *gin.Context) {
 	})
 }
 
-func getUserQuestion(c *gin.Context) {
+func GetUserQuestion(c *gin.Context) {
 	username := utils.GetUsername(c)
 
 	questions, err := dao.GetUserQuestion(username)
@@ -121,7 +121,7 @@ func getUserQuestion(c *gin.Context) {
 	})
 }
 
-func getUserComments(c *gin.Context) {
+func GetUserComments(c *gin.Context) {
 	username := utils.GetUsername(c)
 
 	comments, err := dao.GetUserComments(username)

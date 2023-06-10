@@ -1,4 +1,4 @@
-package api
+package user
 
 import (
 	"github.com/gin-gonic/gin"
@@ -49,7 +49,7 @@ func AlreadyLogin(c *gin.Context) {
 	utils.RespSuccess(c, "true")
 }
 
-func getUserDetail(c *gin.Context) {
+func GetUserDetail(c *gin.Context) {
 	username := utils.GetUsername(c)
 
 	user, err := dao.GetUserDetails(username)

@@ -1,22 +1,45 @@
 import {createStore} from "vuex";
 import axios from "axios";
+import {ElMessage} from "element-plus";
+import {reactive, ref, toRefs} from "vue";
 
 
-const state = {
-  isLogin:"",
-  userDetails:"",
-  allQuestions:""
-}
+const state = reactive({
+    isLogin:"",
+    userDetails:"",
+    allQuestions:"",
+    initData:{
+        telephone:"",
+        address:""
+    }
+})
 
 const mutations ={
   isLogin(state,message){
       state.isLogin = message
+
+      if (message == "false") {
+          ElMessage({
+              message:"现在是游客状态",
+              type:"warning"
+          })
+      }
   },
     userDetails(state,details){
       state.userDetails = details
+      state.initData.telephone = details.Telephone
+        state.initData.address = details.Address
+        if (location.hash !== "#/"){
+            return
+        }
+        ElMessage({
+            message:"你好! "+details.Username,
+            type:"success"
+        })
+
     },
     getAllQuestions(state,questions){
-      state.allQuestions = questions
+      state.allQuestions = ref(questions)
     }
 }
 
@@ -30,7 +53,9 @@ const actions = {
         })
 
         context.commit("isLogin", data.data.message)
-        await context.dispatch("getUserDetails")
+        if (data.data.message === "true"){
+            await context.dispatch("getUserDetails")
+        }
 
     },
     getUserDetails: async function (context) {

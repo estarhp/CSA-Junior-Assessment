@@ -9,13 +9,8 @@ import {useStore} from "vuex";
 const router = useRouter()
 const store = useStore()
 
-const questions =ref(null)
 onMounted(async ()=>{
-  if (!store.state.allQuestions){
-    await store.dispatch("getAllQuestions")
-  }
 
-  questions.value = store.state.allQuestions
 })
 
 
@@ -37,8 +32,8 @@ function goDetail(i){
 
   <Suspense>
     <template #default>
-     <div v-if="questions">
-       <el-row v-for="i in questions" :key="i.ID">
+     <div v-if="store.state.allQuestions">
+       <el-row v-for="i in store.state.allQuestions" :key="i.ID">
          <Question :question="i" @click="goDetail(i)"></Question>
        </el-row>
      </div>

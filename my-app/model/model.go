@@ -4,6 +4,7 @@ type User struct {
 	Username    string
 	Password    string
 	AvatarImage string
+	ImageHash   string
 }
 
 type Question struct {

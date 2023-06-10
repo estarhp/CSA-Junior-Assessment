@@ -2,8 +2,10 @@ package api
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/carlmjohnson/requests"
 	"github.com/gin-gonic/gin"
 	"io"
 	"io/ioutil"
@@ -17,57 +19,14 @@ import (
 	"path/filepath"
 )
 
+var Baseurl = "https://sm.ms/api/v2/"
+var Token = "2QFEYPIYapEV0XW4MgCiysJBbahMsN5s"
+
 func uploadAvatarImage(c *gin.Context) {
-	file, err := c.FormFile("file")
+	req, err := setRequest(c)
 	if err != nil {
-		utils.RespFail(c, "file error")
 		return
 	}
-
-	image, err := file.Open()
-	if err != nil {
-		log.Println(err)
-		utils.RespFail(c, "failed to open file")
-		return
-	}
-
-	//设置参数
-
-	var body = new(bytes.Buffer)
-	writer := multipart.NewWriter(body)
-	part, err := writer.CreateFormFile("smfile", filepath.Base(file.Filename))
-	if err != nil {
-		log.Println(err)
-		utils.RespFail(c, "error")
-		return
-	}
-
-	_, err = io.Copy(part, image)
-
-	if err != nil {
-		log.Println(err)
-		utils.RespFail(c, "failed to add file content")
-		return
-	}
-
-	err = writer.Close()
-
-	if err != nil {
-		log.Println(err)
-		utils.RespFail(c, "failed to close form data")
-		return
-	}
-	req, err := http.NewRequest("POST", "https://sm.ms/api/v2/upload", body)
-
-	if err != nil {
-		log.Println(err)
-		utils.RespFail(c, "internal error")
-		return
-	}
-
-	req.Header.Set("Authorization", "YUXTOHcLUFW7QSyzVRqpYYuXAw8iShY1")
-	req.Header.Set("Content-Type", writer.FormDataContentType())
-
 	client := &http.Client{
 		Transport: &http.Transport{
 			Proxy: func(req *http.Request) (*url.URL, error) {
@@ -84,7 +43,6 @@ func uploadAvatarImage(c *gin.Context) {
 	}
 
 	resp, err := client.Do(req)
-
 	if err != nil {
 		log.Println(err)
 		utils.RespFail(c, "internal error")
@@ -123,7 +81,15 @@ func uploadAvatarImage(c *gin.Context) {
 		utils.RespFail(c, "还未登录噢")
 		return
 	}
-	err = dao.SaveAvatar(username, result.Data.URL)
+	hash, _ := dao.GetImageHash(username)
+	if hash != "" {
+		err := deleteImage(hash)
+		if err != nil {
+			log.Println(err)
+		}
+	}
+
+	err = dao.SaveAvatar(username, result.Data.URL, result.Data.Hash)
 	if err != nil {
 		log.Println(err)
 		utils.RespFail(c, "internal error")
@@ -131,4 +97,73 @@ func uploadAvatarImage(c *gin.Context) {
 	}
 	utils.RespSuccess(c, "成功上传头像")
 
+}
+func deleteImage(hash string) error {
+	var s string
+	err := requests.URL(Baseurl).
+		Pathf("delete/%s", hash).
+		Header("Authorization", Token).
+		ToString(&s).
+		Fetch(context.Background())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func setRequest(c *gin.Context) (*http.Request, error) {
+	file, err := c.FormFile("file")
+	if err != nil {
+		utils.RespFail(c, "file error")
+		return nil, err
+	}
+
+	image, err := file.Open()
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "failed to open file")
+		return nil, err
+	}
+
+	//设置参数
+
+	var body = new(bytes.Buffer)
+	writer := multipart.NewWriter(body)
+	part, err := writer.CreateFormFile("smfile", filepath.Base(file.Filename))
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "error")
+		return nil, err
+	}
+
+	_, err = io.Copy(part, image)
+
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "failed to add file content")
+		return nil, err
+	}
+
+	err = writer.Close()
+
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "failed to close form data")
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", Baseurl+"upload", body)
+
+	if err != nil {
+		log.Println(err)
+		utils.RespFail(c, "internal error")
+		return nil, err
+	}
+
+	req.Header.Set("Authorization", Token)
+	req.Header.Set("Content-Type", writer.FormDataContentType())
+
+	return req, nil
 }

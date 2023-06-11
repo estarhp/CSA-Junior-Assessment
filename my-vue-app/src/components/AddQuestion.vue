@@ -65,7 +65,7 @@ const handleInput = ()=>{
 
 <template>
   <el-col :span="3" >
-    <el-button text @click="dialogVisible = true" color="white" >
+    <el-button text @click="dialogVisible = true" color="white" style="margin-top: 0.5em">
       <el-icon :size="20" color="#303133"><Plus /></el-icon>
     </el-button>
     <el-dialog v-model="dialogVisible" title="Add" width="30%" draggable>

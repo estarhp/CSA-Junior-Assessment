@@ -1,6 +1,5 @@
 <script setup>
-import MainPage from './components/MainPage.vue'
-import {onMounted, watch} from "vue";
+import {onMounted} from "vue";
 import {useStore} from "vuex";
 const store = useStore()
 
@@ -13,8 +12,6 @@ onMounted(async()=>{
 onMounted(async ()=>{
 
     await store.dispatch("getAllQuestions")
-
-
 
 })
 

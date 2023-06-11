@@ -15,7 +15,7 @@ function handleDetails(text){
 </script>
 
 <template>
-  <el-descriptions :title="question.Title" style="background: gray;width: 100%">
+  <el-descriptions :title="question.Title" style="background: #B2DFDB;width: 100%">
     <el-descriptions-item></el-descriptions-item>
     <el-descriptions-item label="发布者:">
       {{question.Username}}

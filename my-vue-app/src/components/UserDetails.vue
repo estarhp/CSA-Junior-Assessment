@@ -84,43 +84,45 @@ async function handSave(){
 </script>
 
 <template>
-  <el-descriptions
-      title="Vertical list with border"
-      :column="4"
-      size="large"
-      border
-  >
-    <el-descriptions-item label="Username">{{store.state.userDetails.Username}}</el-descriptions-item>
-    <el-descriptions-item label="Telephone">
-      <el-input
-          v-model="store.state.userDetails.Telephone"
-          @blur="isPhoneNumber"
-          @focus="input = true"
-          placeholder="你可以输入你的电话号码"
-      >
+  <div style="background: #B2DFDB">
+    <el-descriptions
 
-      </el-input>
-      <div>
-        <el-text class="mx-1" type="danger" v-if="!input">请输入正确的手机号</el-text>
-      </div>
-    </el-descriptions-item>
-    <el-descriptions-item label="Adress" :span="2">
-      <el-input
-      v-model="store.state.userDetails.Address"
-      placeholder="你可以输入自己的住址"
-      >
+        :column="4"
+        size="large"
+        border
+    >
+      <el-descriptions-item label="Username">{{store.state.userDetails.Username}}</el-descriptions-item>
+      <el-descriptions-item label="Telephone">
+        <el-input
+            v-model="store.state.userDetails.Telephone"
+            @blur="isPhoneNumber"
+            @focus="input = true"
+            placeholder="你可以输入你的电话号码"
+        >
 
-      </el-input>
-    </el-descriptions-item>
+        </el-input>
+        <div>
+          <el-text class="mx-1" type="danger" v-if="!input">请输入正确的手机号</el-text>
+        </div>
+      </el-descriptions-item>
+      <el-descriptions-item label="Adress" :span="2">
+        <el-input
+            v-model="store.state.userDetails.Address"
+            placeholder="你可以输入自己的住址"
+        >
 
-  </el-descriptions>
-   <div style="margin-bottom: 20px"></div>
-  <Upload></Upload>
-  <div style="margin-bottom: 20px"></div>
-  <el-button type="primary" round @click="handSave" v-if="alreadyModify" >保存修改</el-button>
-  <el-button type="primary" round disabled v-else >保存修改</el-button>
-  <QandCDetails>
-  </QandCDetails>
+        </el-input>
+      </el-descriptions-item>
+
+    </el-descriptions>
+    <div style="margin-bottom: 20px"></div>
+    <Upload></Upload>
+    <div style="margin-bottom: 20px"></div>
+    <el-button type="primary" round @click="handSave" v-if="alreadyModify" >保存修改</el-button>
+    <el-button type="primary" round disabled v-else >保存修改</el-button>
+    <QandCDetails>
+    </QandCDetails>
+  </div>
 </template>
 
 <style scoped>

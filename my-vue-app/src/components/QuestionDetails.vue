@@ -111,14 +111,14 @@ async function editQuestion(){
 
 <template>
   <div style="background:#F2F3F5;height: 100vh;font-size: 20px" v-if="question">
-    <div class="common-layout" style="width: 100%;background:#909399;text-align: left">
+    <div class="common-layout" style="width: 100%;background:#BBDEFB;text-align: left">
      <div style="text-align: center"> <el-text class="mx-1" style="font-size: 25px">{{question.Title}}</el-text></div>
 
       <el-text class="mx-1" type="success" size="large">{{question.Username}} : </el-text>
       <el-text class="mx-1">{{question.Details}}</el-text>
     </div>
     <div style="margin: 20px 0" />
-    <div style="text-align: right">
+    <div style="text-align: right;">
       <el-input
           v-model="textarea"
           type="textarea"
@@ -131,23 +131,25 @@ async function editQuestion(){
     <div>
       <Comment :beID="question.ID"></Comment>
     </div>
+<div >
 
 
-          <el-button
-              type="danger"
-              round icon="delete"
-              v-if="store.state.userDetails.Username && store.state.userDetails.Username === question.Username"
-              @click="deleteQuestion"
-          >delete</el-button>
+  <el-button
+      type="danger"
+      round icon="delete"
+      v-if="store.state.userDetails.Username && store.state.userDetails.Username === question.Username"
+      @click="deleteQuestion"
+  >delete</el-button>
 
-    <el-button
-        type="primary"
-        icon="edit"
-        v-if="store.state.userDetails.Username && store.state.userDetails.Username === question.Username"
-        @click="centerDialogVisible = true"
-        round >
-      Edit
-    </el-button>
+  <el-button
+      type="primary"
+      icon="edit"
+      v-if="store.state.userDetails.Username && store.state.userDetails.Username === question.Username"
+      @click="centerDialogVisible = true"
+      round >
+    Edit
+  </el-button>
+</div>
     <el-dialog v-model="centerDialogVisible"
                width="30%"
                center

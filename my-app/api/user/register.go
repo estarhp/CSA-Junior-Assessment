@@ -2,8 +2,8 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
-	"log"
 	"my-app/dao"
+	"my-app/logs"
 	"my-app/model"
 	"my-app/utils"
 )
@@ -12,7 +12,7 @@ func Register(c *gin.Context) {
 	var user model.User
 	user.Username = c.PostForm("username")
 	user.Password = c.PostForm("password")
-	log.Println(user)
+	logs.LogSuccess(user.Username)
 
 	is := dao.IsExist(user.Username)
 
@@ -23,9 +23,12 @@ func Register(c *gin.Context) {
 
 	err := dao.AddUser(user)
 	if err != nil {
+		logs.LogError(err)
 		utils.RespFail(c, "the internal error")
 		return
 	}
+
+	logs.LogSuccess(user.Username + " register successfully")
 	utils.RespSuccess(c, "register successfully")
 }
 

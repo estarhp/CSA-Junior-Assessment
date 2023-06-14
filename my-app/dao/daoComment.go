@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"log"
+	"my-app/logs"
 	"my-app/model"
 	"my-app/utils"
 )
@@ -43,7 +43,7 @@ func DeleteComments(questionID string) error {
 	var comment model.Comment
 	result := DB.Where("question_id = ?", questionID).Delete(&comment)
 	if result.Error != nil {
-		log.Println(result.Error)
+		logs.LogError(result.Error)
 		return result.Error
 	}
 	return nil

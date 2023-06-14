@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"my-app/dao"
+	"my-app/logs"
 	"my-app/utils"
 	"net/http"
 )
@@ -25,11 +26,11 @@ func AddComment(c *gin.Context) {
 	beUsername := c.PostForm("beUsername")
 	err := dao.AddComment(username, content, beID, questionID, beUsername)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal err")
 		return
 	}
-
+	logs.LogSuccess(username + " add comment successfully")
 	utils.RespSuccess(c, "添加评论成功")
 
 }
@@ -40,6 +41,7 @@ func GetAllComment(c *gin.Context) {
 	comments, err := dao.GetAllComment(ID)
 
 	if err != nil {
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
@@ -54,10 +56,10 @@ func GetAllComment(c *gin.Context) {
 func deleteComments(questionID string) error {
 	err := dao.DeleteComments(questionID)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		return err
 	}
-
+	logs.LogSuccess("the question of" + questionID + " was deleted")
 	return nil
 }
 
@@ -72,11 +74,11 @@ func UpdateComment(c *gin.Context) {
 	newComment := c.PostForm("content")
 	err := dao.UpdateComment(ID, newComment)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
-
+	logs.LogSuccess("the comment of" + ID + " was updated")
 	utils.RespSuccess(c, "修改成功")
 
 }
@@ -91,7 +93,7 @@ func DeleteComment(c *gin.Context) {
 		utils.RespFail(c, "internal error")
 		return
 	}
-
+	logs.LogSuccess("the comment of" + ID + " was deleted")
 	utils.RespSuccess(c, "删除成功")
 
 }

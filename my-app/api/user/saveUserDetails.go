@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"io"
-	"log"
 	"my-app/dao"
+	"my-app/logs"
 	"my-app/model"
 	"my-app/utils"
 )
@@ -13,13 +13,13 @@ import (
 func SaveUserDetails(c *gin.Context) {
 	username := utils.GetUsername(c)
 	if username == "" {
-		log.Println("没登陆")
+		logs.LogSuccess("没登陆")
 		utils.RespFail(c, "你都没登录")
 		return
 	}
 	bodyBytes, err := io.ReadAll(c.Request.Body)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
@@ -27,18 +27,18 @@ func SaveUserDetails(c *gin.Context) {
 
 	err = json.Unmarshal(bodyBytes, &user)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
 
 	err = dao.SaveUserDetails(username, user.Telephone, user.Address)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
-
+	logs.LogSuccess(username + " save successfully")
 	utils.RespSuccess(c, "save successfully")
 
 }

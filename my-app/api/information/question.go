@@ -2,8 +2,8 @@ package information
 
 import (
 	"github.com/gin-gonic/gin"
-	"log"
 	"my-app/dao"
+	"my-app/logs"
 	"my-app/utils"
 	"net/http"
 )
@@ -22,11 +22,11 @@ func AddQuestion(c *gin.Context) {
 
 	err := dao.AddQuestion(title, details, username)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "add the question error")
 		return
 	}
-
+	logs.LogSuccess(username + " add the question successfully")
 	utils.RespSuccess(c, "add the question successfully")
 
 }
@@ -36,7 +36,7 @@ func GetALlQuestions(c *gin.Context) {
 	questions, err := dao.GetALlQuestions()
 
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "get all questions error")
 		return
 	}
@@ -53,7 +53,7 @@ func DeleteQuestion(c *gin.Context) {
 	err := dao.DeleteQuestion(username, ID)
 
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "wrongly delete")
 		return
 	}
@@ -69,7 +69,7 @@ func DeleteQuestion(c *gin.Context) {
 		utils.RespFail(c, "wrongly delete")
 		return
 	}
-
+	logs.LogSuccess(username + " delete the question successfully whose id is" + ID)
 	utils.RespSuccess(c, "delete successfully")
 }
 func EditQuestion(c *gin.Context) {
@@ -79,11 +79,11 @@ func EditQuestion(c *gin.Context) {
 
 	err := dao.EditQuestion(title, details, ID)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
-
+	logs.LogSuccess(" edit the question successfully whose id is" + ID)
 	utils.RespSuccess(c, "修改问题成功")
 
 }
@@ -93,7 +93,7 @@ func GetQuestion(c *gin.Context) {
 
 	question, err := dao.GetQuestion(ID)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
@@ -110,7 +110,7 @@ func GetUserQuestion(c *gin.Context) {
 	questions, err := dao.GetUserQuestion(username)
 
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal err")
 		return
 	}
@@ -127,7 +127,7 @@ func GetUserComments(c *gin.Context) {
 	comments, err := dao.GetUserComments(username)
 
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}

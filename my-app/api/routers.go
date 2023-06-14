@@ -2,11 +2,11 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"log"
 	"my-app/api/information"
 	"my-app/api/middleWare"
 	"my-app/api/smms"
 	"my-app/api/user"
+	"my-app/logs"
 )
 
 func InitRouter() {
@@ -43,7 +43,7 @@ func InitRouter() {
 
 	err := r.Run(":8000")
 	if err != nil {
-		log.Panicln(err)
+		logs.LogError(err)
 	}
 
 }

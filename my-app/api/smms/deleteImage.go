@@ -3,7 +3,7 @@ package smms
 import (
 	"context"
 	"github.com/carlmjohnson/requests"
-	"log"
+	"my-app/logs"
 	"my-app/model"
 	"my-app/utils"
 )
@@ -19,7 +19,7 @@ func deleteImage(hash string) error {
 		ToJSON(&s).
 		Fetch(context.Background())
 
-	log.Println(s.Message)
+	logs.LogSuccess(s.Message)
 
 	if err != nil {
 		return err

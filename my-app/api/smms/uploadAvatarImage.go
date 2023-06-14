@@ -2,8 +2,8 @@ package smms
 
 import (
 	"github.com/gin-gonic/gin"
-	"log"
 	"my-app/dao"
+	"my-app/logs"
 	"my-app/utils"
 )
 
@@ -20,33 +20,34 @@ func UploadAvatarImage(c *gin.Context) {
 
 	result, err := setRequest(c)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
 
 	if result.Success == false {
-		log.Println(result.Message)
+		logs.LogSuccess(result.Message)
 		utils.RespFail(c, result.Message)
 		return
 	}
 
-	log.Println(result.Message)
+	logs.LogSuccess(result.Message)
 
 	hash, _ := dao.GetImageHash(username)
 	if hash != "" {
 		err := deleteImage(hash)
 		if err != nil {
-			log.Println(err)
+			logs.LogError(err)
 		}
 	}
 
 	err = dao.SaveAvatar(username, result.Data.URL, result.Data.Hash)
 	if err != nil {
-		log.Println(err)
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}
+
 	utils.RespSuccess(c, "成功上传头像")
 
 }

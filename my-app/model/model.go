@@ -54,3 +54,8 @@ type DeleteResult struct {
 	Data      []any  `json:"data"`
 	RequestID string `json:"RequestId"`
 }
+
+type Proxy struct {
+	Proxy    string
+	UseProxy bool
+}

@@ -2,8 +2,8 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
-	"log"
 	"my-app/dao"
+	"my-app/logs"
 	"my-app/model"
 	"my-app/utils"
 	"net/http"
@@ -21,7 +21,7 @@ func Login(c *gin.Context) {
 
 	password, err := dao.QueryPassword(user.Username)
 	if err != nil {
-		log.Fatalln(err)
+		logs.LogError(err)
 		return
 	}
 	if password != user.Password {
@@ -30,6 +30,7 @@ func Login(c *gin.Context) {
 	}
 
 	c.SetCookie("isLogin", user.Username+"+"+user.Password, 3600, "/", "127.0.0.1", false, true)
+	logs.LogSuccess(user.Username + " login successfully")
 	utils.RespSuccess(c, "login successfully")
 }
 
@@ -54,6 +55,7 @@ func GetUserDetail(c *gin.Context) {
 
 	user, err := dao.GetUserDetails(username)
 	if err != nil {
+		logs.LogError(err)
 		utils.RespFail(c, "internal error")
 		return
 	}

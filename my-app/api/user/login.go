@@ -2,6 +2,7 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
+	"my-app/RSA"
 	"my-app/dao"
 	"my-app/logs"
 	"my-app/model"
@@ -28,8 +29,14 @@ func Login(c *gin.Context) {
 		utils.RespFail(c, "the password is wrong")
 		return
 	}
+	encrypted, err := RSA.EncryptByPrivateKey(user.Username + "+" + user.Password)
+	if err != nil {
+		logs.LogError(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
+	c.SetCookie("isLogin", encrypted, 3600, "/", "127.0.0.1", false, true)
 
-	c.SetCookie("isLogin", user.Username+"+"+user.Password, 3600, "/", "127.0.0.1", false, true)
 	logs.LogSuccess(user.Username + " login successfully")
 	utils.RespSuccess(c, "login successfully")
 }

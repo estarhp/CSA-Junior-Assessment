@@ -2,6 +2,8 @@ package utils
 
 import (
 	"github.com/gin-gonic/gin"
+	"my-app/RSA"
+	"my-app/logs"
 	"strings"
 )
 
@@ -10,6 +12,11 @@ func GetUsername(c *gin.Context) string {
 	if err != nil {
 		return ""
 	}
-	username := strings.Split(isLogin, "+")[0]
+	unencrypted, err := RSA.DecryptByPublicKey(isLogin)
+	if err != nil {
+		logs.LogError(err)
+		return ""
+	}
+	username := strings.Split(unencrypted, "+")[0]
 	return username
 }

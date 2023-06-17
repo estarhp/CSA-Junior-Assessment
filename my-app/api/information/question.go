@@ -2,8 +2,10 @@ package information
 
 import (
 	"github.com/gin-gonic/gin"
+	"my-app/cache"
 	"my-app/dao"
 	"my-app/logs"
+	"my-app/model"
 	"my-app/utils"
 	"net/http"
 )
@@ -28,12 +30,25 @@ func AddQuestion(c *gin.Context) {
 	}
 	logs.LogSuccess(username + " add the question successfully")
 	utils.RespSuccess(c, "add the question successfully")
+	err = cache.DeleteCache("allQuestions")
+	if err != nil {
+		logs.LogError(err)
+	}
 
 }
 
 func GetALlQuestions(c *gin.Context) {
+	var questions []model.Question
+	err := cache.GetCache("allQuestions", &questions)
+	if err == nil {
+		c.JSON(http.StatusOK, gin.H{
+			"status":    200,
+			"questions": questions,
+		})
+		return
+	}
 
-	questions, err := dao.GetALlQuestions()
+	questions, err = dao.GetALlQuestions()
 
 	if err != nil {
 		logs.LogError(err)
@@ -45,6 +60,11 @@ func GetALlQuestions(c *gin.Context) {
 		"status":    200,
 		"questions": questions,
 	})
+	err = cache.SetCache("allQuestions", &questions)
+	if err != nil {
+		logs.LogError(err)
+		return
+	}
 }
 
 func DeleteQuestion(c *gin.Context) {
@@ -71,6 +91,10 @@ func DeleteQuestion(c *gin.Context) {
 	}
 	logs.LogSuccess(username + " delete the question successfully whose id is" + ID)
 	utils.RespSuccess(c, "delete successfully")
+	err = cache.DeleteCache("allQuestions")
+	if err != nil {
+		logs.LogError(err)
+	}
 }
 func EditQuestion(c *gin.Context) {
 	title := c.PostForm("title")
@@ -85,6 +109,10 @@ func EditQuestion(c *gin.Context) {
 	}
 	logs.LogSuccess(" edit the question successfully whose id is" + ID)
 	utils.RespSuccess(c, "修改问题成功")
+	err = cache.DeleteCache("allQuestions")
+	if err != nil {
+		logs.LogError(err)
+	}
 
 }
 

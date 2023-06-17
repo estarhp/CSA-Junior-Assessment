@@ -1,6 +1,6 @@
 <script setup>
 
-import {handleResult, handleTime} from "../utils/index.js";
+import {getRandomColor, handleResult, handleTime} from "../utils/index.js";
 import {ref} from "vue";
 import {useStore} from "vuex";
 import axios from "axios";
@@ -107,33 +107,36 @@ async function deleteComment(){
       </span>
     </template>
   </el-dialog>
-  <el-row >
-    <el-col :span="6" style="text-align: left">{{props.comment.Username}} <span v-if="props.comment.BeUsername">->{{props.comment.BeUsername}}</span> : </el-col>
-    <el-col :offset="14" :span="2" >
-      <el-dropdown>
+ <div :style=" `background: ${getRandomColor()}`">
+   <el-row>
+     <el-col :span="6" style="text-align: left">{{props.comment.Username}} <span v-if="props.comment.BeUsername">->{{props.comment.BeUsername}}</span> : </el-col>
+     <el-col :offset="14" :span="2" >
+       <el-dropdown>
     <span class="el-dropdown-link">
        <el-icon><More /></el-icon>
     </span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item @click="centerDialogVisible = true , type=1">回复</el-dropdown-item>
-            <el-dropdown-item @click="modifyComment"
-                              v-if="(store.state.userDetails.Username) && (store.state.userDetails.Username === props.comment.Username) "
-            >修改</el-dropdown-item>
-            <el-dropdown-item @click="deleteComment"
-                              v-if="(store.state.userDetails.Username) && (store.state.userDetails.Username === props.comment.Username) "
-            >删除</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
-    </el-col>
-  </el-row>
+         <template #dropdown>
+           <el-dropdown-menu>
+             <el-dropdown-item @click="centerDialogVisible = true , type=1">回复</el-dropdown-item>
+             <el-dropdown-item @click="modifyComment"
+                               v-if="(store.state.userDetails.Username) && (store.state.userDetails.Username === props.comment.Username) "
+             >修改</el-dropdown-item>
+             <el-dropdown-item @click="deleteComment"
+                               v-if="(store.state.userDetails.Username) && (store.state.userDetails.Username === props.comment.Username) "
+             >删除</el-dropdown-item>
+           </el-dropdown-menu>
+         </template>
+       </el-dropdown>
+     </el-col>
+   </el-row>
+
   <el-row >
     <el-col :span="16">{{props.comment.Content}}</el-col>
   </el-row>
   <el-row>
     <el-col :span="8" :offset="17">{{handleTime(props.comment.Date)}}</el-col>
   </el-row>
+ </div>
   <div v-if="props.comment.Be">
     <CommentDetails v-for="comment in props.comment.Be " :comment="comment" :questionID="props.questionID"></CommentDetails>
   </div>

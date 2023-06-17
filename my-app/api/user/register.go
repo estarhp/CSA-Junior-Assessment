@@ -2,6 +2,7 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
+	"my-app/RSA"
 	"my-app/dao"
 	"my-app/logs"
 	"my-app/model"
@@ -10,8 +11,9 @@ import (
 
 func Register(c *gin.Context) {
 	var user model.User
-	user.Username = c.PostForm("username")
-	user.Password = c.PostForm("password")
+	var err error
+	user.Username, err = RSA.DecryptByPrivateKey(c.PostForm("username"))
+	user.Password, err = RSA.DecryptByPrivateKey(c.PostForm("password"))
 	logs.LogSuccess(user.Username)
 
 	is := dao.IsExist(user.Username)
@@ -21,7 +23,7 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	err := dao.AddUser(user)
+	err = dao.AddUser(user)
 	if err != nil {
 		logs.LogError(err)
 		utils.RespFail(c, "the internal error")

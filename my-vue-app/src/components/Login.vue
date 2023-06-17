@@ -3,7 +3,7 @@ import axios from "axios";
 import { reactive} from 'vue'
 import { useStore } from 'vuex'
 import {reload} from "../utils/index.js";
-
+import {encrypt} from "../cryption/index.js";
 
 
 const store = useStore()
@@ -35,8 +35,8 @@ const onSubmit = async() => {
     url:"/api/login",
     method:"GET",
     params:{
-      username:formInline.username,
-      password:formInline.password
+      username:encrypt(formInline.username),
+      password:encrypt(formInline.password)
     }
   })
   ElMessage({
@@ -58,8 +58,8 @@ const register = async ()=> {
 
   let formData = new FormData();
 
-  formData.append("username",formInline.username)
-  formData.append("password",formInline.password)
+  formData.append("username",encrypt(formInline.username))
+  formData.append("password",encrypt(formInline.password))
   const result = await axios({
     url:"/api/register",
     method:"POST",

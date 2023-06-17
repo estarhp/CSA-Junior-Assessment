@@ -13,3 +13,56 @@
 {"level":"info","ts":1686809342.2632656,"msg":"Message : Upload success."}
 {"level":"info","ts":1686809343.6635916,"msg":"Message : File delete success."}
 {"level":"info","ts":1686809361.433365,"msg":"Message : thy save successfully"}
+{"level":"info","ts":1686986337.7406318,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1686986488.09072,"msg":"Message : thy add the question successfully"}
+{"level":"error","ts":1686988263.160427,"msg":"Error : record not found"}
+{"level":"error","ts":1686988483.8823128,"msg":"Error : record not found"}
+{"level":"error","ts":1686988535.642554,"msg":"Error : record not found"}
+{"level":"error","ts":1686988672.7822142,"msg":"Error : record not found"}
+{"level":"error","ts":1686988752.865844,"msg":"Error : record not found"}
+{"level":"error","ts":1686988806.9316654,"msg":"Error : record not found"}
+{"level":"error","ts":1686988866.434574,"msg":"Error : encoding/hex: invalid byte: U+0054 'T'"}
+{"level":"error","ts":1686988868.03574,"msg":"Error : encoding/hex: invalid byte: U+0076 'v'"}
+{"level":"error","ts":1686988868.03574,"msg":"Error : encoding/hex: invalid byte: U+0076 'v'"}
+{"level":"error","ts":1686988906.7080827,"msg":"Error : encoding/hex: invalid byte: U+0054 'T'"}
+{"level":"error","ts":1686988906.8642273,"msg":"Error : encoding/hex: invalid byte: U+0054 'T'"}
+{"level":"error","ts":1686988932.358092,"msg":"Error : encoding/hex: invalid byte: U+0054 'T'"}
+{"level":"error","ts":1686988955.8209198,"msg":"Error : encoding/hex: invalid byte: U+0057 'W'"}
+{"level":"error","ts":1686989001.945711,"msg":"Error : encoding/hex: invalid byte: U+0057 'W'"}
+{"level":"error","ts":1686989204.681921,"msg":"Error : encoding/hex: invalid byte: U+0056 'V'"}
+{"level":"error","ts":1686989206.8122048,"msg":"Error : encoding/hex: invalid byte: U+0059 'Y'"}
+{"level":"error","ts":1686989207.8890533,"msg":"Error : encoding/hex: invalid byte: U+0059 'Y'"}
+{"level":"error","ts":1686989412.747547,"msg":"Error : encoding/hex: invalid byte: U+0067 'g'"}
+{"level":"error","ts":1686989413.3796093,"msg":"Error : encoding/hex: invalid byte: U+0058 'X'"}
+{"level":"error","ts":1686989413.3796093,"msg":"Error : encoding/hex: invalid byte: U+0058 'X'"}
+{"level":"error","ts":1686989421.6219509,"msg":"Error : encoding/hex: invalid byte: U+0069 'i'"}
+{"level":"error","ts":1686989421.6219509,"msg":"Error : encoding/hex: invalid byte: U+0053 'S'"}
+{"level":"error","ts":1686989421.6219509,"msg":"Error : encoding/hex: invalid byte: U+0053 'S'"}
+{"level":"error","ts":1686989461.9566545,"msg":"Error : encoding/hex: invalid byte: U+0048 'H'"}
+{"level":"error","ts":1686989461.9566545,"msg":"Error : encoding/hex: invalid byte: U+004A 'J'"}
+{"level":"error","ts":1686989461.9566545,"msg":"Error : encoding/hex: invalid byte: U+004A 'J'"}
+{"level":"error","ts":1686989470.9263265,"msg":"Error : encoding/hex: invalid byte: U+0058 'X'"}
+{"level":"error","ts":1686989472.1751285,"msg":"Error : encoding/hex: invalid byte: U+0079 'y'"}
+{"level":"error","ts":1686989472.1751285,"msg":"Error : encoding/hex: invalid byte: U+0079 'y'"}
+{"level":"error","ts":1686989494.3147063,"msg":"Error : encoding/hex: invalid byte: U+0049 'I'"}
+{"level":"error","ts":1686989494.469736,"msg":"Error : encoding/hex: invalid byte: U+0049 'I'"}
+{"level":"error","ts":1686989513.1401577,"msg":"Error : encoding/hex: invalid byte: U+0049 'I'"}
+{"level":"error","ts":1686989513.1401577,"msg":"Error : encoding/hex: invalid byte: U+0069 'i'"}
+{"level":"error","ts":1686989513.1401577,"msg":"Error : encoding/hex: invalid byte: U+0069 'i'"}
+{"level":"error","ts":1686990072.2449458,"msg":"Error : encoding/hex: invalid byte: U+0078 'x'"}
+{"level":"error","ts":1686990072.2449458,"msg":"Error : encoding/hex: invalid byte: U+0057 'W'"}
+{"level":"error","ts":1686990072.2449458,"msg":"Error : encoding/hex: invalid byte: U+0057 'W'"}
+{"level":"error","ts":1686990208.9952571,"msg":"Error : encoding/hex: invalid byte: U+0069 'i'"}
+{"level":"error","ts":1686990208.9952571,"msg":"Error : encoding/hex: invalid byte: U+0078 'x'"}
+{"level":"error","ts":1686990208.9952571,"msg":"Error : encoding/hex: invalid byte: U+0078 'x'"}
+{"level":"error","ts":1686990212.7354386,"msg":"Error : encoding/hex: invalid byte: U+0078 'x'"}
+{"level":"error","ts":1686990212.7354386,"msg":"Error : encoding/hex: invalid byte: U+0057 'W'"}
+{"level":"error","ts":1686990212.7354386,"msg":"Error : encoding/hex: invalid byte: U+0057 'W'"}
+{"level":"info","ts":1686990256.002533,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1686990529.711892,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1686990700.3959422,"msg":"Message : thy"}
+{"level":"info","ts":1686990708.0083241,"msg":"Message : thyqwert"}
+{"level":"error","ts":1686990708.0091052,"msg":"Error : record not found"}
+{"level":"info","ts":1686990708.0124252,"msg":"Message : thyqwert register successfully"}
+{"level":"info","ts":1686990716.7718842,"msg":"Message : thyqwert login successfully"}
+{"level":"info","ts":1686990767.8025663,"msg":"Message : thy login successfully"}

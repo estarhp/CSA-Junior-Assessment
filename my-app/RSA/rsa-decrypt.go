@@ -15,7 +15,7 @@ func DecryptByPublicKey(encrypted string) (string, error) {
 }
 
 func DecryptByPrivateKey(encrypted string) (string, error) {
-	result, err := gorsa.PriKeyEncrypt(encrypted, PrivateKey)
+	result, err := gorsa.PriKeyDecrypt(encrypted, PrivateKey)
 	if err != nil {
 		logs.LogError(err)
 		return "", err

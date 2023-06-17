@@ -13,6 +13,7 @@
     "alova": "^2.6.0",
     "axios": "^1.4.0",
     "element-plus": "^2.3.6",
+    "jsencrypt": "^3.3.2",
     "react": "^18.2.0",
     "unplugin-icons": "^0.16.1",
     "vue": "^3.2.47",

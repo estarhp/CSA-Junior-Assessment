@@ -12,8 +12,15 @@ import (
 
 func Login(c *gin.Context) {
 	var user model.User
-	user.Username = c.Query("username")
-	user.Password = c.Query("password")
+	var err error
+	user.Username, err = RSA.DecryptByPrivateKey(c.Query("username"))
+	user.Password, err = RSA.DecryptByPrivateKey(c.Query("password"))
+
+	if err != nil {
+		logs.LogError(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
 
 	if isexist := dao.IsExist(user.Username); !isexist {
 		utils.RespFail(c, "the user does not exist")

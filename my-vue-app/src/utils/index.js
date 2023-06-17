@@ -88,3 +88,10 @@ export function reload(result){
         },1000)
     }
 }
+
+const color = ["#F0FFFF", "#FAFAD2", "#F5FFFA", "#F0FFF0", "#FFFAF0", "#FFFFF0", "#FFFACD", "#F8F8FF", "#F5F5F5", "#F0F8FF", "#F0E68C", "#EEE8AA", "#E0FFFF", "#E6E6FA", "#DCDCDC", "#D3D3D3", "#D8BFD8", "#DDA0DD", "#DC143C", "#DA70D6", "#DB7093", "#DAA520", "#D2691E", "#CD853F", "#C71585", "#BDB76B", "#BC8F8F", "#BA55D3", "#B8860B", "#AFEEEE"]
+
+export function getRandomColor() {
+    const randomIndex = Math.floor(Math.random() * color.length);
+    return color[randomIndex];
+}

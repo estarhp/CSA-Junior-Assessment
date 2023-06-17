@@ -31,7 +31,7 @@ onMounted(async function getComments(){
   <suspense>
     <template #default>
       <div style="font-size: 16px;" v-if="comments">
-        <div  v-for="i in comments" :key="comments.ID" style="background: #CDD0D6;margin-bottom: 20px" >
+        <div  v-for="i in comments" :key="comments.ID" style="margin-bottom: 20px" >
           <CommentDetails :comment="i" :questionID="props.beID"></CommentDetails>
         </div>
       </div>

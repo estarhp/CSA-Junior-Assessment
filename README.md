@@ -3,7 +3,7 @@ csa-golang 的 考核
 
 顺便练练前端
 
-my-vue-app 中存有前端项目源码
+fore-end 中存有前端项目源码
 
 my-app,已经打包的前端源码+go代码，运行编译运行cmd.go ,打开127.0.0.1:8000 既可以，默认的代理地址为127.0.0.1:1080，具体的配置的config文件夹的proxy中
 
@@ -19,9 +19,11 @@ my-app,已经打包的前端源码+go代码，运行编译运行cmd.go ,打开12
 
 加密采用了rsa的方式，采用公钥加密，私钥解密的方式，对cookie中保存的用户信息进行了加密返回
 
+以及对于前端提交的账号密码进行解密
+
 简单是用来zap 来做了简单的日志记录
 
-前端主要用到vite+vue+vuex+vue-router+element-ui plus
+用redis做了一个简单的代理
 
 后端 gorm  gin requests 
 

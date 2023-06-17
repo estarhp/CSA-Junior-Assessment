@@ -66,3 +66,29 @@
 {"level":"info","ts":1686990708.0124252,"msg":"Message : thyqwert register successfully"}
 {"level":"info","ts":1686990716.7718842,"msg":"Message : thyqwert login successfully"}
 {"level":"info","ts":1686990767.8025663,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1686990905.0855021,"msg":"Error : encoding/hex: invalid byte: U+0074 't'"}
+{"level":"error","ts":1686990905.0857778,"msg":"Error : encoding/hex: odd length hex string"}
+{"level":"error","ts":1686990905.0857778,"msg":"Error : encoding/hex: odd length hex string"}
+{"level":"info","ts":1686990963.0891147,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1686990986.7673316,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991494.3358524,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1686991510.6821058,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991600.3350706,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1686991735.1869402,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1686991828.0827887,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991828.8476562,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1686991848.1521213,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991948.6975038,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1686990905.0855021,"msg":"Error : encoding/hex: invalid byte: U+0074 't'"}
+{"level":"error","ts":1686990905.0857778,"msg":"Error : encoding/hex: odd length hex string"}
+{"level":"error","ts":1686990905.0857778,"msg":"Error : encoding/hex: odd length hex string"}
+{"level":"info","ts":1686990963.0891147,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1686990986.7673316,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991494.3358524,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1686991510.6821058,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991600.3350706,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1686991735.1869402,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1686991828.0827887,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991828.8476562,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1686991848.1521213,"msg":"Message : thy add comment successfully"}
+{"level":"error","ts":1686991948.6975038,"msg":"Error : redis: all ring shards are down"}

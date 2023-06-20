@@ -109,3 +109,18 @@
 {"level":"info","ts":1687274881.6486213,"msg":"Message : thy login successfully"}
 {"level":"info","ts":1687275986.561561,"msg":"Message : tang login successfully"}
 {"level":"info","ts":1687276018.2959814,"msg":"Message : 狗画家 login successfully"}
+{"level":"error","ts":1687276861.9496357,"msg":"Error : record not found"}
+{"level":"info","ts":1687276865.2930844,"msg":"Message : 李恩熙"}
+{"level":"error","ts":1687276865.293771,"msg":"Error : record not found"}
+{"level":"info","ts":1687276865.3011897,"msg":"Message : 李恩熙 register successfully"}
+{"level":"info","ts":1687276866.2850647,"msg":"Message : 李恩熙 login successfully"}
+{"level":"info","ts":1687276902.7028356,"msg":"Message : 李恩熙 add comment successfully"}
+{"level":"info","ts":1687277838.9324846,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1687277945.354439,"msg":"Error : write tcp [::1]:56923->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687277945.368504,"msg":"Error : write tcp [::1]:56918->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687278140.489453,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1687278141.8597336,"msg":"Error : write tcp [::1]:50140->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687278141.870518,"msg":"Error : write tcp [::1]:50139->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687278967.4569242,"msg":"Error : write tcp [::1]:64190->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687278967.471909,"msg":"Error : write tcp [::1]:64195->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"info","ts":1687279125.7223692,"msg":"Message : lex login successfully"}

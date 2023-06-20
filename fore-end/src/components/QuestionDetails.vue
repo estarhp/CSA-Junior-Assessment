@@ -123,7 +123,7 @@ async function editQuestion(){
       questionID
     }
   })
-
+   handleResult(result,false)
    islike.value = await isLike(question.value.ID,islike)
    likesNumber.value = await likeNumber(question.value.ID)
 
@@ -136,7 +136,7 @@ async function editQuestion(){
       questionID
     }
   })
-
+   handleResult(result,false)
    islike.value = await isLike(question.value.ID,islike)
    likesNumber.value = await likeNumber(question.value.ID)
 }
@@ -190,7 +190,7 @@ async function isLike(questionID){
       />
       <el-button type="success" style="margin-right: 20px" @click="Submit">Submit</el-button>
       <span style="margin-right: 10px;color: gray">{{likesNumber}}</span>
-      <el-icon style="margin-right: 10px;cursor: pointer;font-size: 25px" @click="like(question.ID) && isLike(question.ID,islike)" v-if="!islike"><Star /></el-icon>
+      <el-icon style="margin-right: 10px;cursor: pointer;height: ;: 30px" @click="like(question.ID) && isLike(question.ID,islike)" v-if="!islike"><Star /></el-icon>
       <el-icon style="margin-right: 10px;cursor: pointer;color: red;height: 30px " @click="unlike(question.ID) && isLike(question.ID,islike)"  v-else><Star /></el-icon>
     </div>
     <div>

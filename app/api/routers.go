@@ -16,9 +16,7 @@ func InitRouter() {
 	r.Use(middleWare.Cors())
 	r.StaticFile("/", "./static/dist/index.html")
 	r.Static("/assets", "./static/dist/assets")
-	r.StaticFile("/favicon.ico", "./static/dist/favicon.ico")
-	// 其他静态资源
-	r.Static("/public", "./api/static")
+	r.StaticFile("/vite.svg", "./static/dist/vite.svg")
 
 	p := r.Group("api")
 	{
@@ -46,7 +44,7 @@ func InitRouter() {
 		p.GET("/isLike", like.IsLike)
 	}
 
-	err := r.Run(":8000")
+	err := r.Run("127.0.0.1:8000")
 	if err != nil {
 		logs.LogError(err)
 	}

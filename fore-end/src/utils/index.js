@@ -40,10 +40,10 @@ function already(comments){
     return false
 }
 
-export function handleResult(result){
+export function handleResult(result,willreload=true){
     if (result.data.status == 500){
         ElMessage({
-            message:result.data.messae,
+            message:result.data.message,
             type:"warning"
         })
 
@@ -56,10 +56,12 @@ export function handleResult(result){
             type:"success"
         })
     }
-
+if (willreload) {
     setTimeout(()=>{
         location.reload()
     },500)
+}
+
 }
 
 

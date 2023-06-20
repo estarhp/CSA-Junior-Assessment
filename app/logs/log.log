@@ -124,3 +124,4 @@
 {"level":"error","ts":1687278967.4569242,"msg":"Error : write tcp [::1]:64190->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
 {"level":"error","ts":1687278967.471909,"msg":"Error : write tcp [::1]:64195->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
 {"level":"info","ts":1687279125.7223692,"msg":"Message : lex login successfully"}
+{"level":"info","ts":1687279291.4686918,"msg":"Message : 狗画家 login successfully"}

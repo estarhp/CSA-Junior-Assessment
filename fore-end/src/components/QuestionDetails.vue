@@ -1,10 +1,11 @@
 <script setup>
 import {useRoute, useRouter} from "vue-router";
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import axios from "axios";
 import Comment from "./Comment.vue";
 import {useStore} from "vuex";
 import {handleResult} from "../utils/index.js";
+
 
 
 const textarea = ref('')
@@ -16,6 +17,10 @@ const question = ref(null)
 
 const text = ref(null)
 const title = ref(null)
+
+const islike = ref(false)
+const likesNumber = ref(0)
+
 onMounted(async ()=>{
   const result  =await  axios({
     url:"/api/getQuestion",
@@ -28,6 +33,9 @@ onMounted(async ()=>{
   question.value = result.data.question
   text.value = question.value.Details
   title.value = question.value.Title
+
+  islike.value = await isLike(question.value.ID,islike)
+  likesNumber.value = await likeNumber(question.value.ID)
 
 
 })
@@ -107,6 +115,60 @@ async function editQuestion(){
 
 }
 
+ async function like(questionID) {
+  const result = await axios({
+    url:"/api/like",
+    method:"get",
+    params:{
+      questionID
+    }
+  })
+
+   islike.value = await isLike(question.value.ID,islike)
+   likesNumber.value = await likeNumber(question.value.ID)
+
+}
+ async function unlike(questionID) {
+  const result = await axios({
+    url:"/api/unlike",
+    method:"get",
+    params:{
+      questionID
+    }
+  })
+
+   islike.value = await isLike(question.value.ID,islike)
+   likesNumber.value = await likeNumber(question.value.ID)
+}
+
+ async function likeNumber(questionID) {
+  const result = await axios({
+    url:"/api/likeNumber",
+    method:"get",
+    params:{
+      questionID
+    }
+  })
+
+   return result.data.likes
+}
+
+async function isLike(questionID){
+  const result = await axios({
+    url:"/api/isLike",
+    method:"get",
+    params:{
+      questionID:questionID
+    }
+  })
+  return  result.data.isLike
+
+}
+
+
+
+
+
 </script>
 
 <template>
@@ -127,6 +189,9 @@ async function editQuestion(){
           @blur="handle"
       />
       <el-button type="success" style="margin-right: 20px" @click="Submit">Submit</el-button>
+      <span style="margin-right: 10px;color: gray">{{likesNumber}}</span>
+      <el-icon style="margin-right: 10px;cursor: pointer;font-size: 25px" @click="like(question.ID) && isLike(question.ID,islike)" v-if="!islike"><Star /></el-icon>
+      <el-icon style="margin-right: 10px;cursor: pointer;color: red;height: 30px " @click="unlike(question.ID) && isLike(question.ID,islike)"  v-else><Star /></el-icon>
     </div>
     <div>
       <Comment :beID="question.ID"></Comment>
@@ -149,6 +214,7 @@ async function editQuestion(){
       round >
     Edit
   </el-button>
+
 </div>
     <el-dialog v-model="centerDialogVisible"
                width="30%"

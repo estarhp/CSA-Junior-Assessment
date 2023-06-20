@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"my-app/api/information"
+	"my-app/api/like"
 	"my-app/api/middleWare"
 	"my-app/api/smms"
 	"my-app/api/user"
@@ -39,6 +40,10 @@ func InitRouter() {
 		p.GET("/getUserComments", information.GetUserComments)
 		p.POST("/upload", smms.UploadAvatarImage)
 		p.POST("/saveUserDetails", user.SaveUserDetails)
+		p.GET("/like", like.Like)
+		p.GET("/unlike", like.UnLike)
+		p.GET("/likeNumber", like.NumberLike)
+		p.GET("/isLike", like.IsLike)
 	}
 
 	err := r.Run(":8000")

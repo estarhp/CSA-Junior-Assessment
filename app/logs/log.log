@@ -92,3 +92,20 @@
 {"level":"error","ts":1686991828.8476562,"msg":"Error : redis: all ring shards are down"}
 {"level":"info","ts":1686991848.1521213,"msg":"Message : thy add comment successfully"}
 {"level":"error","ts":1686991948.6975038,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1687263852.1663642,"msg":"Message : 狗画家"}
+{"level":"error","ts":1687263852.1707091,"msg":"Error : record not found"}
+{"level":"info","ts":1687263852.1736565,"msg":"Message : 狗画家 register successfully"}
+{"level":"info","ts":1687263856.4433775,"msg":"Message : 狗画家 login successfully"}
+{"level":"info","ts":1687263873.5035374,"msg":"Message : Upload success."}
+{"level":"info","ts":1687263896.1137319,"msg":"Message : 狗画家 save successfully"}
+{"level":"info","ts":1687263917.7165308,"msg":"Message : 狗画家 add comment successfully"}
+{"level":"info","ts":1687263931.011321,"msg":"Message : 狗画家 add comment successfully"}
+{"level":"error","ts":1687264012.1531203,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"info","ts":1687266862.5801578,"msg":"Message : 狗画家 login successfully"}
+{"level":"info","ts":1687271272.666401,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1687272805.459034,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1687273143.7458904,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1687273490.6976798,"msg":"Error : bad connection"}
+{"level":"info","ts":1687274881.6486213,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1687275986.561561,"msg":"Message : tang login successfully"}
+{"level":"info","ts":1687276018.2959814,"msg":"Message : 狗画家 login successfully"}

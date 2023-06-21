@@ -23,7 +23,8 @@ my-app,已经打包的前端源码+go代码，运行编译运行cmd.go ,打开12
 
 简单是用来zap 来做了简单的日志记录
 
-用redis做了一个简单的代理
+用redis做了一个简单的缓存
+redis 实现了一个简单的点赞功能
 
 后端 gorm  gin requests 
 

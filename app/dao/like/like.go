@@ -53,3 +53,22 @@ func IsLike(username string, questionID string) (bool, error) {
 
 	return result, err
 }
+
+func DeleteAllLike(questionID string) error {
+	key := fmt.Sprintf("article:%s:likes", questionID)
+
+	// 获取当前集合中的所有成员
+	members, err := client.SMembers(key).Result()
+	if err != nil {
+		return err
+	}
+
+	// 逐个删除集合中的成员
+	for _, member := range members {
+		err := client.SRem(key, member).Err()
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}

@@ -155,3 +155,4 @@
 {"level":"error","ts":1687492311.154752,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
 {"level":"error","ts":1687492373.915493,"msg":"Error : unsupported data type: 0xc00007d590: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
 {"level":"error","ts":1687492400.3892264,"msg":"Error : unsupported data type: 0xc00007dd90: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"info","ts":1687494841.0632348,"msg":"Message : 狗画家 login successfully"}

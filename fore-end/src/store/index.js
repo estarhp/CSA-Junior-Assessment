@@ -26,9 +26,11 @@ const mutations ={
       }
   },
     userDetails(state,details){
+      details.Follows = JSON.parse(details.Follows)
+        console.log( details)
       state.userDetails = details
       state.initData.telephone = details.Telephone
-        state.initData.address = details.Address
+      state.initData.address = details.Address
         if (location.hash !== "#/"){
             return
         }

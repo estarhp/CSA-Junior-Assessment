@@ -41,7 +41,7 @@
   </el-table>
   <div v-else style="font-size: 20px">你尚未发布任何问题</div>
    <div style="margin-bottom: 20px"></div>
-  <h3 style="text-align: left">your comments {{getNumberOfComments(comments)}}</h3>
+  <h3 style="text-align: left">your comments ({{getNumberOfComments(comments)}}) </h3>
   <el-row  v-if="comments" v-for="(i,index) in comments" style=";margin-bottom: 30px">
     <el-col :span="24">话题:  {{ getQuestion(index) }}</el-col>
      <el-row style="width: 100%">
@@ -104,6 +104,7 @@ async function deleteQuestion(ID : string ) {
       location.reload()
     },1000)
   }
+
 
 
 }

@@ -6,9 +6,21 @@ import UserDetails from "../components/UserDetails.vue";
 
 const routes = [
     // 动态字段以冒号开始
-    { path: '/questionDetails/:id/:edit',name:"question.details", component: QuestionDetails, props: true },
-    {path: '/',component:  MainPage},
-    {path:"/userDetails",component:UserDetails}
+    {
+        path: '/questionDetails/:id/:edit',
+        name:"question.details",
+        component: QuestionDetails,
+        props: true },
+    {
+        path: '/',
+        component:  MainPage},
+    {
+        path:"/userDetails/:userDetails/:isOther",
+        name:"user.details",
+        component:UserDetails,
+        props: true
+    }
+
 ]
 
 

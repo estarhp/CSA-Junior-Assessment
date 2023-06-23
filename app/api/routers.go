@@ -38,10 +38,12 @@ func InitRouter() {
 		p.GET("/getUserComments", information.GetUserComments)
 		p.POST("/upload", smms.UploadAvatarImage)
 		p.POST("/saveUserDetails", user.SaveUserDetails)
-		p.GET("/like", like.Like)
+		p.GET("/redis", like.Like)
 		p.GET("/unlike", like.UnLike)
 		p.GET("/likeNumber", like.NumberLike)
 		p.GET("/isLike", like.IsLike)
+		p.GET("/otherUserDetails", user.GetOtherUserDetails)
+		p.GET("/follow", user.Follow)
 	}
 
 	err := r.Run("127.0.0.1:8000")

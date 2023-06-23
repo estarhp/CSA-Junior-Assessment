@@ -7,7 +7,6 @@ import (
 	"my-app/logs"
 	"my-app/model"
 	"my-app/utils"
-	"net/http"
 )
 
 func Login(c *gin.Context) {
@@ -64,17 +63,7 @@ func AlreadyLogin(c *gin.Context) {
 	utils.RespSuccess(c, "true")
 }
 
-func GetUserDetail(c *gin.Context) {
-	username := utils.GetUsername(c)
-
-	user, err := dao.GetUserDetails(username)
-	if err != nil {
-		logs.LogError(err)
-		utils.RespFail(c, "internal error")
-		return
-	}
-	user.Password = ""
-	c.JSON(http.StatusOK, gin.H{
-		"userDetails": user,
-	})
+func Logoff(c *gin.Context) {
+	c.SetCookie("isLogin", "", -1, "/", "", false, true)
+	utils.RespSuccess(c, "log off successfully")
 }

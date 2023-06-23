@@ -5,6 +5,7 @@ import axios from "axios";
 import Comment from "./Comment.vue";
 import {useStore} from "vuex";
 import {handleResult} from "../utils/index.js";
+import Avatar from "./Avatar.vue";
 
 
 
@@ -175,7 +176,7 @@ async function isLike(questionID){
   <div style="background:#F2F3F5;height: 100vh;font-size: 20px" v-if="question">
     <div class="common-layout" style="width: 100%;background:#BBDEFB;text-align: left">
      <div style="text-align: center"> <el-text class="mx-1" style="font-size: 25px">{{question.Title}}</el-text></div>
-
+      <Avatar :username="question.Username"></Avatar>
       <el-text class="mx-1" type="success" size="large">{{question.Username}} : </el-text>
       <el-text class="mx-1">{{question.Details}}</el-text>
     </div>
@@ -190,7 +191,7 @@ async function isLike(questionID){
       />
       <el-button type="success" style="margin-right: 20px" @click="Submit">Submit</el-button>
       <span style="margin-right: 10px;color: gray">{{likesNumber}}</span>
-      <el-icon style="margin-right: 10px;cursor: pointer;height: ;: 30px" @click="like(question.ID) && isLike(question.ID,islike)" v-if="!islike"><Star /></el-icon>
+      <el-icon style="margin-right: 10px;cursor: pointer;height: 30px" @click="like(question.ID) && isLike(question.ID,islike)" v-if="!islike"><Star /></el-icon>
       <el-icon style="margin-right: 10px;cursor: pointer;color: red;height: 30px " @click="unlike(question.ID) && isLike(question.ID,islike)"  v-else><Star /></el-icon>
     </div>
     <div>

@@ -29,7 +29,13 @@ async function logoff() {
 }
 
 function userDetails() {
-  router.push("/userDetails")
+  router.push({
+   name:"user.details",
+    params:{
+     userDetails: JSON.stringify(""),
+      isOther:false
+    }
+  })
 }
 
 

@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"my-app/dao/like"
+	"my-app/dao/redis"
 	"my-app/model"
 	"my-app/utils"
 )
@@ -43,7 +43,7 @@ func DeleteQuestion(username, ID string) error {
 	if result.Error != nil {
 		return result.Error
 	}
-	err := like.DeleteAllLike(question.ID)
+	err := redis.DeleteAllLike(question.ID)
 	if err != nil {
 		return err
 	}

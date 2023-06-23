@@ -33,8 +33,3 @@ func Register(c *gin.Context) {
 	logs.LogSuccess(user.Username + " register successfully")
 	utils.RespSuccess(c, "register successfully")
 }
-
-func Logoff(c *gin.Context) {
-	c.SetCookie("isLogin", "", -1, "/", "", false, true)
-	utils.RespSuccess(c, "log off successfully")
-}

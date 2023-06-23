@@ -7,6 +7,7 @@ type User struct {
 	ImageHash   string
 	Telephone   string
 	Address     string
+	Follows     string
 }
 
 type Question struct {

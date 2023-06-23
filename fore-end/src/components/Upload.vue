@@ -37,7 +37,6 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
 
 <template>
   <el-row justify="center">
-    <el-image style="width: 250px;display: inline-block;margin-right: 100px" :src="store.state.userDetails.AvatarImage" fit="fit" />
     <el-upload
         class="avatar-uploader"
         action="/api/upload"
@@ -45,7 +44,7 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload"
         headers="multipart/form-data"
-        style="background: #CDD0D6"
+        style="background: #CDD0D6;margin-left: 100px"
     >
       <!--    <img v-if="imageUrl" :src="imageUrl" class="avatar" />-->
       <el-icon  class="avatar-uploader-icon"><Plus /></el-icon>

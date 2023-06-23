@@ -4,11 +4,10 @@ import {useStore} from "vuex";
 import {computed, onMounted, ref} from "vue";
 import QandCDetails from "./QandCDetails.vue";
 import Upload from "./Upload.vue";
-import {createAlova, useRequest} from "alova";
-import VueHook from 'alova/vue';
-import GlobalFetch from 'alova/GlobalFetch';
 import {ElMessage} from "element-plus";
 import axios from "axios";
+import {useRoute} from "vue-router";
+import {getRandomColor} from "../utils/index.js";
 
 
 const store = useStore()
@@ -17,9 +16,20 @@ const address = ref("")
 const regExp = /^1[3-9]\d{9}$/;
 
 const input = ref(true)
-
-
-
+const route = useRoute()
+const userDetails = ref("")
+const isOther = computed(()=>{
+  if (userDetails.value.Username === store.state.userDetails.Username){
+    return true
+  }
+  if (route.params.isOther ==="false"){
+    return true
+  }
+  return false
+})
+onMounted(async ()=>{
+    userDetails.value = JSON.parse(route.params.userDetails)
+})
 
 function isPhoneNumber() {
 
@@ -81,6 +91,16 @@ async function handSave(){
   }
 
 }
+
+async function follow(){
+  const result = await axios({
+    url:"/api/follow",
+    method:"get",
+    params:{
+      followed : userDetails.value.Username
+    }
+  })
+}
 </script>
 
 <template>
@@ -91,13 +111,25 @@ async function handSave(){
         size="large"
         border
     >
-      <el-descriptions-item label="Username">{{store.state.userDetails.Username}}</el-descriptions-item>
+      <el-descriptions-item label="Username" v-if="isOther">{{store.state.userDetails.Username}}</el-descriptions-item>
+      <el-descriptions-item label="Username" v-else>{{userDetails.Username}}</el-descriptions-item>
       <el-descriptions-item label="Telephone">
         <el-input
             v-model="store.state.userDetails.Telephone"
             @blur="isPhoneNumber"
             @focus="input = true"
             placeholder="你可以输入你的电话号码"
+            v-if="isOther"
+        >
+
+        </el-input>
+        <el-input
+            v-model="userDetails.Telephone"
+            @blur="isPhoneNumber"
+            @focus="input = true"
+            placeholder="你可以输入你的电话号码"
+            v-else
+            disabled
         >
 
         </el-input>
@@ -109,6 +141,15 @@ async function handSave(){
         <el-input
             v-model="store.state.userDetails.Address"
             placeholder="你可以输入自己的住址"
+            v-if="isOther"
+        >
+
+        </el-input>
+        <el-input
+            v-model="userDetails.Address"
+            placeholder="你可以输入自己的住址"
+            v-else
+            disabled
         >
 
         </el-input>
@@ -116,12 +157,33 @@ async function handSave(){
 
     </el-descriptions>
     <div style="margin-bottom: 20px"></div>
-    <Upload></Upload>
+    <el-row justify="center" v-if="isOther">
+      <el-image style="width: 250px;display: inline-block;" :src="store.state.userDetails.AvatarImage" :fit="fit" />
+      <Upload v-if="isOther"></Upload>
+    </el-row>
+    <el-row justify="center"  v-else>
+      <el-image style="width: 250px;display: inline-block;" :src="store.state.userDetails.AvatarImage" :fit="fit" />
+      <Upload v-if="isOther"></Upload>
+    </el-row>
     <div style="margin-bottom: 20px"></div>
-    <el-button type="primary" round @click="handSave" v-if="alreadyModify" >保存修改</el-button>
-    <el-button type="primary" round disabled v-else >保存修改</el-button>
-    <QandCDetails>
+    <div  v-if="isOther">
+      <el-button type="primary" round @click="handSave" v-if="alreadyModify" >保存修改</el-button>
+      <el-button type="primary" round disabled v-else >保存修改</el-button>
+    </div>
+    <div v-else>
+      <el-button type="success" plain @click="follow">关注</el-button>
+    </div>
+    <QandCDetails v-if="isOther">
     </QandCDetails>
+
+ <div v-if="isOther">
+   <h3 style="text-align: left" v-if="store.state.userDetails">你的关注 ({{store.state.userDetails.Follows.length}}) </h3>
+   <el-row><el-col :span="4" v-for="i in store.state.userDetails.Follows" :style=" `background: ${getRandomColor()}`">{{i}}</el-col></el-row>
+ </div>
+    <div v-else>
+      <h3 style="text-align: left" v-if="store.state.userDetails.Follow">他/她的关注 ({{store.state.userDetails.Follows.length}}) </h3>
+    </div>
+
   </div>
 </template>
 

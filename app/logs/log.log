@@ -125,3 +125,33 @@
 {"level":"error","ts":1687278967.471909,"msg":"Error : write tcp [::1]:64195->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
 {"level":"info","ts":1687279125.7223692,"msg":"Message : lex login successfully"}
 {"level":"info","ts":1687279291.4686918,"msg":"Message : 狗画家 login successfully"}
+{"level":"error","ts":1687328642.9989827,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1687328728.105791,"msg":"Message : 狗画家 login successfully"}
+{"level":"error","ts":1687328813.6468456,"msg":"Error : write tcp [::1]:54682->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"info","ts":1687328876.5382717,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1687328882.4749463,"msg":"Message : the question of20c3f586-f5d5-4d35-a705-923dadc69ef7 was deleted"}
+{"level":"info","ts":1687328882.4749463,"msg":"Message : thy delete the question successfully whose id is20c3f586-f5d5-4d35-a705-923dadc69ef7"}
+{"level":"info","ts":1687328924.8580751,"msg":"Message : thy add the question successfully"}
+{"level":"error","ts":1687328942.1006162,"msg":"Error : write tcp [::1]:54905->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687328942.1085877,"msg":"Error : write tcp [::1]:54883->[::1]:6379: wsasend: An existing connection was forcibly closed by the remote host."}
+{"level":"info","ts":1687485836.1851568,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1687486462.8573875,"msg":"Message : thy save successfully"}
+{"level":"info","ts":1687486480.7340071,"msg":"Message : thy save successfully"}
+{"level":"info","ts":1687486488.7015493,"msg":"Message : thy save successfully"}
+{"level":"info","ts":1687491305.757618,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1687491659.7709196,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687491752.8690398,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687491763.18818,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687491775.6879635,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687491790.9121997,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687491913.8293464,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687491936.6659944,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687491939.2521727,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492076.2080185,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492102.8323083,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492170.9145124,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492181.689937,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492234.7870848,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492311.154752,"msg":"Error : unsupported data type: &[]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492373.915493,"msg":"Error : unsupported data type: 0xc00007d590: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
+{"level":"error","ts":1687492400.3892264,"msg":"Error : unsupported data type: 0xc00007dd90: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}

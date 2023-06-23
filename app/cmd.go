@@ -5,7 +5,7 @@ import (
 	"my-app/cache"
 	"my-app/configs"
 	"my-app/dao"
-	"my-app/dao/like"
+	"my-app/dao/redis"
 	"my-app/logs"
 )
 
@@ -13,7 +13,7 @@ func main() {
 	logs.InitLogger()
 	configs.InitViper()
 	dao.InitDB()
-	like.InitLike()
+	redis.InitLike()
 	cache.InitCache()
 	api.InitRouter()
 }

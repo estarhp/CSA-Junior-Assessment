@@ -2,7 +2,7 @@ package like
 
 import (
 	"github.com/gin-gonic/gin"
-	"my-app/dao/like"
+	"my-app/dao/redis"
 	"my-app/logs"
 	"my-app/utils"
 	"net/http"
@@ -15,7 +15,7 @@ func Like(c *gin.Context) {
 		return
 	}
 	questionID := c.Query("questionID")
-	err := like.Like(username, questionID)
+	err := redis.Like(username, questionID)
 	if err != nil {
 		logs.LogError(err)
 		utils.RespFail(c, "internal error")
@@ -30,7 +30,7 @@ func UnLike(c *gin.Context) {
 		return
 	}
 	questionID := c.Query("questionID")
-	err := like.Unlike(username, questionID)
+	err := redis.Unlike(username, questionID)
 	if err != nil {
 		logs.LogError(err)
 		utils.RespFail(c, "internal error")
@@ -40,7 +40,7 @@ func UnLike(c *gin.Context) {
 }
 func NumberLike(c *gin.Context) {
 	questionID := c.Query("questionID")
-	likes, err := like.GetLikes(questionID)
+	likes, err := redis.GetLikes(questionID)
 	if err != nil {
 		logs.LogError(err)
 		utils.RespFail(c, "internal error")
@@ -59,7 +59,7 @@ func IsLike(c *gin.Context) {
 	}
 	questionID := c.Query("questionID")
 
-	isLike, err := like.IsLike(username, questionID)
+	isLike, err := redis.IsLike(username, questionID)
 	if err != nil {
 		logs.LogError(err)
 		utils.RespFail(c, "internal error")

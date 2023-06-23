@@ -172,3 +172,32 @@
 {"level":"info","ts":1687505335.6261108,"msg":"Message : thy add comment successfully"}
 {"level":"info","ts":1687505405.8114777,"msg":"Message :  edit the question successfully whose id is336b0da6-cad8-4d9c-ba7b-28ff5835e60b"}
 {"level":"info","ts":1687505410.4559426,"msg":"Message :  edit the question successfully whose id is336b0da6-cad8-4d9c-ba7b-28ff5835e60b"}
+{"level":"error","ts":1687506374.4927084,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687506376.183724,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1687506396.6488578,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687506396.664716,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687506399.0075405,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687506399.1932957,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687506399.1932957,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687506401.557551,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687506403.9119225,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507119.5950181,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1687507464.2388105,"msg":"Error : listen tcp 127.0.0.1:8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687507472.2277155,"msg":"Error : listen tcp 127.0.0.1:8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687507583.8960278,"msg":"Error : redis: all ring shards are down"}
+{"level":"info","ts":1687507602.0463178,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1687507607.1631992,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507607.1779456,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507609.5281103,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507611.8710809,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1687507642.4701455,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1687507646.1113691,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507647.0774992,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507647.0926027,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507649.440415,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507651.120872,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507651.1373205,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507653.476162,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687507712.972193,"msg":"Error : listen tcp 127.0.0.1:8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"info","ts":1687507819.3362036,"msg":"Message : 狗画家 login successfully"}
+{"level":"error","ts":1687507888.9697118,"msg":"Error : listen tcp 127.0.0.1:8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}

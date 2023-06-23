@@ -17,6 +17,7 @@ func InitRouter() {
 	r.StaticFile("/", "./static/dist/index.html")
 	r.Static("/assets", "./static/dist/assets")
 	r.StaticFile("/vite.svg", "./static/dist/vite.svg")
+	r.Static("/public", "./static/dist")
 
 	p := r.Group("api")
 	{
@@ -38,12 +39,14 @@ func InitRouter() {
 		p.GET("/getUserComments", information.GetUserComments)
 		p.POST("/upload", smms.UploadAvatarImage)
 		p.POST("/saveUserDetails", user.SaveUserDetails)
-		p.GET("/redis", like.Like)
+		p.GET("/like", like.Like)
 		p.GET("/unlike", like.UnLike)
 		p.GET("/likeNumber", like.NumberLike)
 		p.GET("/isLike", like.IsLike)
 		p.GET("/otherUserDetails", user.GetOtherUserDetails)
 		p.GET("/follow", user.Follow)
+		p.GET("/IsFollowed", user.IsFollowed)
+		p.GET("/unfollow", user.Unfollow)
 	}
 
 	err := r.Run("127.0.0.1:8000")

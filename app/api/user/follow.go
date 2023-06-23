@@ -5,6 +5,7 @@ import (
 	"my-app/dao/redis"
 	"my-app/logs"
 	"my-app/utils"
+	"net/http"
 )
 
 func Follow(c *gin.Context) {
@@ -39,16 +40,25 @@ func Unfollow(c *gin.Context) {
 	utils.RespFail(c, "取消关注成功")
 }
 
-func GetAllFollows(c *gin.Context) []string {
+func IsFollowed(c *gin.Context) {
 	username := utils.GetUsername(c)
+
 	if username == "" {
-		return []string{}
-	}
-	follows, err := redis.GetAllFollows(username)
-	if err != nil {
-		logs.LogError(err)
-		return nil
+		utils.RespFail(c, "未登录")
+		return
 	}
 
-	return follows
+	BeUsername := c.Query("BeUsername")
+
+	followed, err := redis.IsFollowed(username, BeUsername)
+	if err != nil {
+		logs.LogError(err)
+		utils.RespFail(c, "internal error")
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"IsFollowed": followed,
+	})
+
 }

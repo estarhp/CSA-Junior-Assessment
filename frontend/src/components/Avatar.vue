@@ -31,8 +31,10 @@ onMounted(async ()=>{
 </script>
 
 <template>
-  <el-avatar v-if="userDetails.AvatarImage" :src="userDetails.AvatarImage" @click="toDetails"></el-avatar>
-  <el-avatar v-else> user </el-avatar>
+  <span @click="toDetails">
+    <el-avatar v-if="userDetails.AvatarImage" :src="userDetails.AvatarImage"></el-avatar>
+    <el-avatar v-else> user </el-avatar>
+  </span>
 </template>
 
 <style scoped>

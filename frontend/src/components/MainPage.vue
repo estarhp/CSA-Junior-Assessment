@@ -13,7 +13,7 @@ const store = useStore()
   <div class="common-layout">
     <el-container>
       <el-header style="background: #00BCD4;height: auto" ><Navigator></Navigator></el-header>
-      <el-main style="background: url('../assets/kwp97MvPYV.jpg');height: 100%" ><Main></Main></el-main>
+      <el-main style="background: url('../../public/kwp97MvPYV.jpg');height: 100%" ><Main></Main></el-main>
     </el-container>
   </div>
 </template>

@@ -156,3 +156,19 @@
 {"level":"error","ts":1687492373.915493,"msg":"Error : unsupported data type: 0xc00007d590: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
 {"level":"error","ts":1687492400.3892264,"msg":"Error : unsupported data type: 0xc00007dd90: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"}
 {"level":"info","ts":1687494841.0632348,"msg":"Message : 狗画家 login successfully"}
+{"level":"info","ts":1687503979.31871,"msg":"Message : 狗画家 login successfully"}
+{"level":"info","ts":1687504451.560746,"msg":"Message : lex login successfully"}
+{"level":"info","ts":1687504473.3466098,"msg":"Message : lex add the question successfully"}
+{"level":"info","ts":1687504612.1819158,"msg":"Message : 狗画家 login successfully"}
+{"level":"error","ts":1687504745.861308,"msg":"Error : record not found"}
+{"level":"info","ts":1687504747.6464589,"msg":"Message : 让我洛一下"}
+{"level":"error","ts":1687504747.6477883,"msg":"Error : record not found"}
+{"level":"info","ts":1687504747.6507192,"msg":"Message : 让我洛一下 register successfully"}
+{"level":"info","ts":1687504748.503547,"msg":"Message : 让我洛一下 login successfully"}
+{"level":"info","ts":1687504801.4644308,"msg":"Message : 让我洛一下 add the question successfully"}
+{"level":"info","ts":1687504825.5584588,"msg":"Message : 狗画家 login successfully"}
+{"level":"info","ts":1687504921.4184973,"msg":"Message : 狗画家 add comment successfully"}
+{"level":"info","ts":1687505309.401597,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1687505335.6261108,"msg":"Message : thy add comment successfully"}
+{"level":"info","ts":1687505405.8114777,"msg":"Message :  edit the question successfully whose id is336b0da6-cad8-4d9c-ba7b-28ff5835e60b"}
+{"level":"info","ts":1687505410.4559426,"msg":"Message :  edit the question successfully whose id is336b0da6-cad8-4d9c-ba7b-28ff5835e60b"}

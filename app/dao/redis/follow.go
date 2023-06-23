@@ -30,3 +30,13 @@ func GetAllFollows(username string) ([]string, error) {
 	}
 	return members, nil
 }
+
+func IsFollowed(username string, BeUsername string) (bool, error) {
+	key := fmt.Sprintf("follow:%s:follows", username)
+	result, err := client.SIsMember(key, BeUsername).Result()
+	if err != nil {
+		return false, err
+	}
+
+	return result, err
+}

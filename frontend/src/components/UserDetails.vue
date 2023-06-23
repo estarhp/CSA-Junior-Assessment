@@ -7,7 +7,7 @@ import Upload from "./Upload.vue";
 import {ElMessage} from "element-plus";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import {getRandomColor} from "../utils/index.js";
+import {getRandomColor, handleResult} from "../utils/index.js";
 
 
 const store = useStore()
@@ -18,6 +18,8 @@ const regExp = /^1[3-9]\d{9}$/;
 const input = ref(true)
 const route = useRoute()
 const userDetails = ref("")
+
+const IsFollowed = ref(false)
 const isOther = computed(()=>{
   if (userDetails.value.Username === store.state.userDetails.Username){
     return true
@@ -29,7 +31,22 @@ const isOther = computed(()=>{
 })
 onMounted(async ()=>{
     userDetails.value = JSON.parse(route.params.userDetails)
+    if (isOther.value === false) {
+
+      await IsFollow()
+    }
 })
+
+async function IsFollow(){
+  const result = await axios({
+    url:"/api/IsFollowed",
+    params:{
+      BeUsername:userDetails.value.Username
+    }
+  })
+
+  IsFollowed.value =  result.data.IsFollowed
+}
 
 function isPhoneNumber() {
 
@@ -100,6 +117,20 @@ async function follow(){
       followed : userDetails.value.Username
     }
   })
+  handleResult(result,false)
+  await IsFollow()
+}
+
+async function unfollow() {
+  const result = await axios({
+    url:"/api/unfollow",
+    method:"get",
+    params:{
+      followed : userDetails.value.Username
+    }
+  })
+  handleResult(result,false)
+  await IsFollow()
 }
 </script>
 
@@ -127,7 +158,7 @@ async function follow(){
             v-model="userDetails.Telephone"
             @blur="isPhoneNumber"
             @focus="input = true"
-            placeholder="你可以输入你的电话号码"
+            placeholder=""
             v-else
             disabled
         >
@@ -147,7 +178,7 @@ async function follow(){
         </el-input>
         <el-input
             v-model="userDetails.Address"
-            placeholder="你可以输入自己的住址"
+            placeholder=""
             v-else
             disabled
         >
@@ -162,7 +193,7 @@ async function follow(){
       <Upload v-if="isOther"></Upload>
     </el-row>
     <el-row justify="center"  v-else>
-      <el-image style="width: 250px;display: inline-block;" :src="store.state.userDetails.AvatarImage" :fit="fit" />
+      <el-image style="width: 250px;display: inline-block;" :src="userDetails.AvatarImage" :fit="fit" />
       <Upload v-if="isOther"></Upload>
     </el-row>
     <div style="margin-bottom: 20px"></div>
@@ -171,7 +202,8 @@ async function follow(){
       <el-button type="primary" round disabled v-else >保存修改</el-button>
     </div>
     <div v-else>
-      <el-button type="success" plain @click="follow">关注</el-button>
+      <el-button type="success" plain @click="follow" v-if="!IsFollowed">关注</el-button>
+      <el-button type="success" plain @click="unfollow" v-else>取消关注</el-button>
     </div>
     <QandCDetails v-if="isOther">
     </QandCDetails>

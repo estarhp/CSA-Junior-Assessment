@@ -230,3 +230,86 @@
 {"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
 {"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
 {"level":"info","ts":1687624228.968824,"msg":"Message : pthy"}
+{"level":"info","ts":1687624476.3986409,"msg":"Message : thyt"}
+{"level":"error","ts":1687624476.400196,"msg":"Error : record not found"}
+{"level":"info","ts":1687624476.4029279,"msg":"Message : thyt register successfully"}
+{"level":"info","ts":1687624477.1791165,"msg":"Message : thyt login successfully"}
+{"level":"info","ts":1687624484.7079637,"msg":"Message : Upload success."}
+{"level":"error","ts":1687624729.8684914,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687624763.0546222,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687624803.3045006,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687624803.30513,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625539.9976554,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625539.9976554,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625585.249605,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687625588.2195134,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625588.2195134,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625642.7568395,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625652.3575325,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625706.4795947,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60332->104.21.83.45:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625706.4795947,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60332->104.21.83.45:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625789.1693861,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687625829.7167864,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60457->172.67.213.1:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625829.7167864,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60457->172.67.213.1:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625935.8040297,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625935.8040297,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"info","ts":1687625992.4134932,"msg":"Message : Upload success."}
+{"level":"info","ts":1687625994.7813272,"msg":"Message : File delete success."}
+{"level":"error","ts":1687621293.6626596,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1687621298.292615,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621298.3078754,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1687621304.6037226,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1687621308.0317338,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1687621330.6831825,"msg":"Message : Upload success."}
+{"level":"info","ts":1687621332.5828853,"msg":"Message : File delete success."}
+{"level":"error","ts":1687621338.8438413,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621347.8272955,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621347.8272955,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621350.187302,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621353.558149,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621353.558149,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621355.8984542,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1687621422.4996414,"msg":"Message :  edit the question successfully whose id is336b0da6-cad8-4d9c-ba7b-28ff5835e60b"}
+{"level":"error","ts":1687623658.6768878,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687623658.6768878,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"info","ts":1687623677.173285,"msg":"Message : Upload success."}
+{"level":"info","ts":1687623718.244535,"msg":"Message : pthy"}
+{"level":"info","ts":1687623725.5006738,"msg":"Message : pthy"}
+{"level":"error","ts":1687624200.1546574,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624200.1546574,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624200.1594663,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"info","ts":1687624228.968824,"msg":"Message : pthy"}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"info","ts":1687624228.968824,"msg":"Message : pthy"}
+{"level":"info","ts":1687624476.3986409,"msg":"Message : thyt"}
+{"level":"error","ts":1687624476.400196,"msg":"Error : record not found"}
+{"level":"info","ts":1687624476.4029279,"msg":"Message : thyt register successfully"}
+{"level":"info","ts":1687624477.1791165,"msg":"Message : thyt login successfully"}
+{"level":"info","ts":1687624484.7079637,"msg":"Message : Upload success."}
+{"level":"error","ts":1687624729.8684914,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687624763.0546222,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687624803.3045006,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687624803.30513,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625539.9976554,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625539.9976554,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625585.249605,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687625588.2195134,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625588.2195134,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625642.7568395,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625652.3575325,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625706.4795947,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60332->104.21.83.45:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625706.4795947,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60332->104.21.83.45:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625789.1693861,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687625829.7167864,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60457->172.67.213.1:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625829.7167864,"msg":"Error : ErrTransport: Post \"https://sm.ms/api/v2/upload\": read tcp 10.17.222.7:60457->172.67.213.1:443: wsarecv: An existing connection was forcibly closed by the remote host."}
+{"level":"error","ts":1687625935.8040297,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"error","ts":1687625935.8040297,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
+{"level":"info","ts":1687625992.4134932,"msg":"Message : Upload success."}
+{"level":"info","ts":1687625994.7813272,"msg":"Message : File delete success."}
+{"level":"info","ts":1687627076.727792,"msg":"Message : Upload success."}
+{"level":"info","ts":1687627077.6973958,"msg":"Message : File delete success."}
+{"level":"info","ts":1687627090.3911467,"msg":"Message : Upload success."}
+{"level":"info","ts":1687627091.3407638,"msg":"Message : File delete success."}

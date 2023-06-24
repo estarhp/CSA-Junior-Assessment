@@ -70,6 +70,21 @@ func setRequest(c *gin.Context) (model.SmResult, error) {
 		logs.LogError(err)
 		return result, err
 	}
-
+	//urlString := result.Data.URL
+	//
+	//// 解析URL
+	//u, err := url.Parse(urlString)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//// 获取文件名
+	//fileName := path.Base(u.Path)
+	//
+	//// 去掉后缀名
+	//nameWithoutExtension := strings.TrimSuffix(fileName, path.Ext(fileName))
+	//
+	//newURL := "https://smms.app/image/" + nameWithoutExtension
+	//result.Data.URL = newURL
 	return result, nil
 }

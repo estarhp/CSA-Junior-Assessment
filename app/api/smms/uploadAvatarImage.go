@@ -7,7 +7,7 @@ import (
 	"my-app/utils"
 )
 
-var Baseurl = "https://sm.ms/api/v2/"
+var Baseurl = "https://smms.app/api/v2/"
 var Token = "WKYnjWj6opFxTB6pgKvLnf0FKoFjWtyB"
 
 func UploadAvatarImage(c *gin.Context) {

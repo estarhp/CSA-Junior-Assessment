@@ -224,3 +224,9 @@
 {"level":"error","ts":1687624200.1546574,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
 {"level":"error","ts":1687624200.1546574,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
 {"level":"error","ts":1687624200.1594663,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"info","ts":1687624228.968824,"msg":"Message : pthy"}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624211.8520367,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"info","ts":1687624228.968824,"msg":"Message : pthy"}

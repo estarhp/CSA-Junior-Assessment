@@ -49,7 +49,7 @@ func InitRouter() {
 		p.GET("/unfollow", user.Unfollow)
 	}
 
-	err := r.Run("127.0.0.1:8000")
+	err := r.Run(":8000")
 	if err != nil {
 		logs.LogError(err)
 	}

@@ -309,3 +309,13 @@
 {"level":"error","ts":1687625935.8040297,"msg":"Error : ErrTransport: Post \"https://sm.ms.app/api/v2/upload\": dial tcp: lookup sm.ms.app: no such host"}
 {"level":"info","ts":1687625992.4134932,"msg":"Message : Upload success."}
 {"level":"info","ts":1687625994.7813272,"msg":"Message : File delete success."}
+{"level":"info","ts":1687628261.0176802,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1687628280.8625617,"msg":"Message : Upload success."}
+{"level":"info","ts":1687628282.71169,"msg":"Message : File delete success."}
+{"level":"error","ts":1687628363.1031196,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"info","ts":1687628261.0176802,"msg":"Message : thy login successfully"}
+{"level":"info","ts":1687628280.8625617,"msg":"Message : Upload success."}
+{"level":"info","ts":1687628282.71169,"msg":"Message : File delete success."}
+{"level":"error","ts":1687628363.1031196,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"info","ts":1687628403.5746484,"msg":"Message : Upload success."}
+{"level":"info","ts":1687628405.2245045,"msg":"Message : File delete success."}

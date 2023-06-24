@@ -201,3 +201,26 @@
 {"level":"error","ts":1687507712.972193,"msg":"Error : listen tcp 127.0.0.1:8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
 {"level":"info","ts":1687507819.3362036,"msg":"Message : 狗画家 login successfully"}
 {"level":"error","ts":1687507888.9697118,"msg":"Error : listen tcp 127.0.0.1:8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","ts":1687621293.6626596,"msg":"Error : redis: all ring shards are down"}
+{"level":"error","ts":1687621298.292615,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621298.3078754,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1687621304.6037226,"msg":"Message : thy login successfully"}
+{"level":"error","ts":1687621308.0317338,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1687621330.6831825,"msg":"Message : Upload success."}
+{"level":"info","ts":1687621332.5828853,"msg":"Message : File delete success."}
+{"level":"error","ts":1687621338.8438413,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621347.8272955,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621347.8272955,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621350.187302,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621353.558149,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621353.558149,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1687621355.8984542,"msg":"Error : dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1687621422.4996414,"msg":"Message :  edit the question successfully whose id is336b0da6-cad8-4d9c-ba7b-28ff5835e60b"}
+{"level":"error","ts":1687623658.6768878,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687623658.6768878,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"info","ts":1687623677.173285,"msg":"Message : Upload success."}
+{"level":"info","ts":1687623718.244535,"msg":"Message : pthy"}
+{"level":"info","ts":1687623725.5006738,"msg":"Message : pthy"}
+{"level":"error","ts":1687624200.1546574,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624200.1546574,"msg":"Error : Error 1045 (28000): Access denied for user 'TheCSA'@'localhost' (using password: YES)"}
+{"level":"error","ts":1687624200.1594663,"msg":"Error : listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}

@@ -41,7 +41,7 @@ func Login(c *gin.Context) {
 		utils.RespFail(c, "internal error")
 		return
 	}
-	c.SetCookie("isLogin", encrypted, 3600, "/", "127.0.0.1", false, true)
+	c.SetCookie("isLogin", encrypted, 3600, "/", "http://8.130.101.163/", false, true)
 
 	logs.LogSuccess(user.Username + " login successfully")
 	utils.RespSuccess(c, "login successfully")
